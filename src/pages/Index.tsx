@@ -1,4 +1,3 @@
-
 import { Play } from 'lucide-react';
 import { ButtonGradient } from '@/components/ui/button-gradient';
 import { Link } from 'react-router-dom';
@@ -8,21 +7,20 @@ const Index = () => {
     <div className="min-h-screen">
       {/* Hero Section */}
       <div className="relative h-screen flex items-center">
-        {/* Video Background */}
+        {/* Video Background with new styling */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-background/90 to-background z-10" />
-          {/* Add your showreel video here */}
-          <div className="bg-[url('https://images.unsplash.com/photo-1536240478700-b869070f9279?ixlib=rb-4.0.3')] bg-cover bg-center h-full w-full opacity-50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/80 to-background z-10" />
+          <div className="bg-[url('https://images.unsplash.com/photo-1536240478700-b869070f9279?ixlib=rb-4.0.3')] bg-cover bg-center h-full w-full opacity-30 scale-110 animate-[pulse_4s_ease-in-out_infinite]" />
         </div>
 
         {/* Content */}
         <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-          <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent mb-6">
-              Crafting Stories Through Visual Editing
+          <div className="max-w-3xl animate-fade-up">
+            <h1 className="text-4xl md:text-6xl font-bold text-gradient mb-6 leading-tight">
+              Bringing Your Stories to Life Through Visual Magic
             </h1>
-            <p className="text-xl text-gray-300 mb-8">
-              Hi, I'm Anand Chowdari, a professional video editor specializing in cinematic storytelling and dynamic content creation.
+            <p className="text-xl text-gray-300 mb-8 leading-relaxed">
+              Hi, I'm Anand Chowdari, transforming raw footage into captivating stories that move hearts and inspire minds.
             </p>
             <div className="flex flex-wrap gap-4">
               <ButtonGradient asChild size="lg">
@@ -30,9 +28,9 @@ const Index = () => {
                   Hire Me
                 </Link>
               </ButtonGradient>
-              <ButtonGradient variant="outline" size="lg" asChild>
+              <ButtonGradient variant="outline" size="lg" asChild className="group">
                 <Link to="/portfolio" className="flex items-center gap-2">
-                  <Play size={20} />
+                  <Play size={20} className="group-hover:text-primary transition-colors" />
                   Watch Showreel
                 </Link>
               </ButtonGradient>
@@ -41,7 +39,7 @@ const Index = () => {
         </div>
       </div>
 
-      {/* Featured Work Preview */}
+      {/* Featured Work Preview with updated styling */}
       <div className="py-20 bg-black/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-12 bg-gradient-to-r from-primary to-[#33C3F0] bg-clip-text text-transparent">
