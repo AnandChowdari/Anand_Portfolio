@@ -23,11 +23,16 @@ const Contact = () => {
             {/* Contact Form */}
             <div className="bg-black/30 p-8 rounded-lg border border-border">
               <h2 className="text-2xl font-bold mb-6">Send a Message</h2>
-              <form className="space-y-6">
+              <form  action="https://formsubmit.co/anandchowdari07@gmail.com" 
+                  method="POST"
+                     className="space-y-6">
+                      <input type="hidden" name="_next" value="https://yourwebsite.com/thankyou" />
                 <div>
                   <label className="text-sm text-gray-400 mb-2 block">Name</label>
                   <input
                     type="text"
+                    name="name"
+                    required
                     className="w-full bg-black/30 border border-border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50"
                   />
                 </div>
@@ -35,13 +40,17 @@ const Contact = () => {
                   <label className="text-sm text-gray-400 mb-2 block">Email</label>
                   <input
                     type="email"
+                    name="email"
+                    required
                     className="w-full bg-black/30 border border-border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50"
                   />
                 </div>
                 <div>
                   <label className="text-sm text-gray-400 mb-2 block">Project Details</label>
                   <textarea
+                    name="message"
                     rows={6}
+                    required
                     className="w-full bg-black/30 border border-border rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-primary/50"
                   ></textarea>
                 </div>
