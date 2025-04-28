@@ -1,26 +1,31 @@
 
 import { Play } from 'lucide-react';
+import cinematicImage from '../assets/images/Gaming-Laptop.jpg';
+import explainatory from '../assets/images/Headtalk-SC1.jpg';
 
 const Portfolio = () => {
   const projects = [
     {
       title: "Cinematic Travel Film",
-      category: "Travel",
-      thumbnail: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21",
-      description: "A visual journey through exotic locations"
+      category: "Cinematography",
+      thumbnail: cinematicImage,
+      description: "A visual journey through exotic Visuals",
+      link: "https://youtu.be/kA6piZKzZcA",
     },
     {
-      title: "Product Launch",
-      category: "Corporate",
-      thumbnail: "https://images.unsplash.com/photo-1523712999610-f77fbcfc3843",
-      description: "High-end product showcase"
+      title: "Head Talk Videos",
+      category: "Education",
+      thumbnail: explainatory,
+      description: "High-end product showcase",
+      link: "https://www.youtube.com/playlist?list=PLajQqbFuAfuvhz31keKvvSHcJ9qMmVynG",
     },
-    {
+    /*{
       title: "Music Video Edit",
       category: "Music",
       thumbnail: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb",
-      description: "Dynamic music video editing"
-    },
+      description: "Dynamic music video editing",
+      link: "https://youtu.be/kA6piZKzZcA",
+    },*/
     // Add more projects as needed
   ];
 
@@ -56,10 +61,16 @@ const Portfolio = () => {
                     <p className="text-primary mb-2">{project.category}</p>
                     <h3 className="text-xl font-bold text-white mb-2">{project.title}</h3>
                     <p className="text-gray-300 mb-4">{project.description}</p>
-                    <button className="flex items-center gap-2 text-white hover:text-primary transition-colors">
-                      <Play size={20} />
-                      Watch Project
-                    </button>
+                    <button asChild className="flex items-center">
+  <a 
+    href={project.link} 
+    target="_blank" 
+    rel="noopener noreferrer"
+  >
+    <play className="w-4 h-4 mr-2" /> Watch Project
+  </a>
+</button>
+
                   </div>
                 </div>
               </div>
