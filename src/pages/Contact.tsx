@@ -93,7 +93,7 @@ const Contact = () => {
                     className="flex items-center gap-2 text-gray-300 hover:text-primary transition-colors"
                   >
                     <Mail className="w-5 h-5" />
-                    contact@example.com
+                    connect.anandchowdari@gmail.com
                   </a>
                 </div>
                 <div className="p-6 bg-black/30 rounded-lg border border-border">
