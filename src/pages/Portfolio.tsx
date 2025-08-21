@@ -18,9 +18,9 @@ const Portfolio = () => {
 
   const videoCategories = [
     {
-      title: "Travel & Adventure",
+      title: "Explinatory Videos",
       videos: [
-        { id: "dQw4w9WgXcQ", title: "Epic Mountain Journey" },
+        { id: "IEyUdxOezJY", title: "2d Animations - 1" },
         { id: "dQw4w9WgXcQ", title: "Ocean Adventure" }
       ]
     },
