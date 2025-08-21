@@ -21,7 +21,7 @@ const Portfolio = () => {
       title: "Explinatory Videos",
       videos: [
         { id: "IEyUdxOezJY", title: "2d Animations - 1" },
-        { id: "dQw4w9WgXcQ", title: "Ocean Adventure" }
+        { id: "oOXnyem0O6g", title: "2d Animations - 2" }
       ]
     },
     {
