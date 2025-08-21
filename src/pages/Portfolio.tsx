@@ -18,14 +18,14 @@ const Portfolio = () => {
 
   const videoCategories = [
     {
-      title: "Explinatory Videos",
+      title: "Short Explinatory Videos",
       videos: [
         { id: "IEyUdxOezJY", title: "2d Animations - 1" },
         { id: "oOXnyem0O6g", title: "2d Animations - 2" }
       ]
     },
     {
-      title: "Music Videos",
+      title: "Client Edits",
       videos: [
         { id: "dQw4w9WgXcQ", title: "Electronic Beat Drop" },
         { id: "dQw4w9WgXcQ", title: "Acoustic Sessions" }
@@ -38,7 +38,7 @@ const Portfolio = () => {
         { id: "dQw4w9WgXcQ", title: "Company Overview" }
       ]
     },
-    {
+    /*{
       title: "Wedding & Events",
       videos: [
         { id: "dQw4w9WgXcQ", title: "Romantic Wedding Film" },
@@ -51,7 +51,7 @@ const Portfolio = () => {
         { id: "dQw4w9WgXcQ", title: "Behind the Scenes" },
         { id: "dQw4w9WgXcQ", title: "Interview Series" }
       ]
-    }
+    }*/
   ];
 
   const thumbnailProjects = [
