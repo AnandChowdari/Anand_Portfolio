@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 
 const Portfolio = () => {
-  const [activeSection, setActiveSection] = useState('thumbnails');
+  const [activeSection, setActiveSection] = useState('video-edits');
   const [hoveredThumbnail, setHoveredThumbnail] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
