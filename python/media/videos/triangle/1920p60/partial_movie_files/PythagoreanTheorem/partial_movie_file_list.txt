@@ -1,0 +1,12 @@
+# This file is used internally by FFMPEG.
+file 'file:F:/Coding/python/media/videos/triangle/1920p60/partial_movie_files/PythagoreanTheorem/3363968157_1623224520_223132457.mp4'
+file 'file:F:/Coding/python/media/videos/triangle/1920p60/partial_movie_files/PythagoreanTheorem/433841841_282349793_1263278384.mp4'
+file 'file:F:/Coding/python/media/videos/triangle/1920p60/partial_movie_files/PythagoreanTheorem/433841841_4079250704_1251710520.mp4'
+file 'file:F:/Coding/python/media/videos/triangle/1920p60/partial_movie_files/PythagoreanTheorem/433841841_688757013_354673501.mp4'
+file 'file:F:/Coding/python/media/videos/triangle/1920p60/partial_movie_files/PythagoreanTheorem/433841841_4079250704_3096376463.mp4'
+file 'file:F:/Coding/python/media/videos/triangle/1920p60/partial_movie_files/PythagoreanTheorem/433841841_3629691344_3077523872.mp4'
+file 'file:F:/Coding/python/media/videos/triangle/1920p60/partial_movie_files/PythagoreanTheorem/433841841_4079250704_3690569717.mp4'
+file 'file:F:/Coding/python/media/videos/triangle/1920p60/partial_movie_files/PythagoreanTheorem/433841841_3614290882_3775632607.mp4'
+file 'file:F:/Coding/python/media/videos/triangle/1920p60/partial_movie_files/PythagoreanTheorem/433841841_4079250704_2376490701.mp4'
+file 'file:F:/Coding/python/media/videos/triangle/1920p60/partial_movie_files/PythagoreanTheorem/433841841_279719004_4189300885.mp4'
+file 'file:F:/Coding/python/media/videos/triangle/1920p60/partial_movie_files/PythagoreanTheorem/433841841_2872842549_4199895025.mp4'

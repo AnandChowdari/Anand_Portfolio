@@ -1,0 +1,6 @@
+# This file is used internally by FFMPEG.
+file 'file:F:/Coding/python/media/videos/triangle/1920p60/partial_movie_files/TriangleLabels/3363968157_1623224520_223132457.mp4'
+file 'file:F:/Coding/python/media/videos/triangle/1920p60/partial_movie_files/TriangleLabels/433841841_2124977645_1263278384.mp4'
+file 'file:F:/Coding/python/media/videos/triangle/1920p60/partial_movie_files/TriangleLabels/433841841_708628649_4013054423.mp4'
+file 'file:F:/Coding/python/media/videos/triangle/1920p60/partial_movie_files/TriangleLabels/433841841_3468679354_1076883726.mp4'
+file 'file:F:/Coding/python/media/videos/triangle/1920p60/partial_movie_files/TriangleLabels/433841841_2872842549_2469041890.mp4'
