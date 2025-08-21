@@ -203,7 +203,7 @@ const Portfolio = () => {
       {/* Navigation Sections */}
       <div className="py-8 bg-background/80 backdrop-blur-sm border-b border-border/50 sticky top-16 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap gap-4 justify-center">
+          <div className="flex overflow-x-auto gap-4 justify-start md:justify-center no-scrollbar">
             {portfolioSections.map((section) => {
               const Icon = section.icon;
               return (
