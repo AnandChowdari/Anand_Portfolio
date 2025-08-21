@@ -203,14 +203,14 @@ const Portfolio = () => {
       {/* Navigation Sections */}
       <div className="py-8 bg-background/80 backdrop-blur-sm border-b border-border/50 sticky top-16 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex overflow-x-auto gap-4 justify-start md:justify-center no-scrollbar">
+          <div className="flex overflow-x-auto scrollbar-custom gap-4 justify-start md:justify-center no-scrollbar">
             {portfolioSections.map((section) => {
               const Icon = section.icon;
               return (
                 <button
                   key={section.id}
                   onClick={() => setActiveSection(section.id)}
-                  className={`flex items-center gap-3 px-6 py-3 rounded-xl transition-all duration-300 ${
+                  className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-all duration-300 ${
                     activeSection === section.id
                       ? 'bg-primary text-primary-foreground shadow-[0_0_20px_rgba(155,135,245,0.3)]'
                       : 'bg-card/50 text-muted-foreground hover:bg-card hover:text-foreground border border-border/50 hover:border-primary/30'
