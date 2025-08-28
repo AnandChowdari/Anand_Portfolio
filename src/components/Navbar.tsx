@@ -9,11 +9,11 @@ const Navbar = () => {
 
   const navItems = [
     { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
     { name: 'Portfolio', path: '/portfolio' },
     { name: 'Services', path: '/services' },
     { name: 'Testimonials', path: '/testimonials' },
     { name: 'Contact', path: '/contact' },
+    { name: 'About', path: '/about' },
   ];
 
   return (
