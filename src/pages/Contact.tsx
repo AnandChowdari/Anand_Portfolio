@@ -69,7 +69,7 @@ const Contact = () => {
                   <h3 className="text-lg font-semibold mb-4">Social Media</h3>
                   <div className="flex gap-4">
                     <a
-                      href="https://instagram.com"
+                      href="https://www.instagram.com/astroanand_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-3 bg-black/30 rounded-full hover:bg-primary/20 transition-colors"
@@ -77,7 +77,7 @@ const Contact = () => {
                       <Instagram className="w-6 h-6" />
                     </a>
                     <a
-                      href="https://linkedin.com"
+                      href="www.linkedin.com/in/anand-chowdari"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-3 bg-black/30 rounded-full hover:bg-primary/20 transition-colors"
