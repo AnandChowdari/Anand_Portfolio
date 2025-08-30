@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "relative overflow-hidden bg-gradient-to-b from-[#7300b1] via-[#a359e4] to-[#7300b1] text-white shadow-[0_0_20px_rgba(106,13,173,0.3)] hover:shadow-[0_0_25px_rgba(106,13,173,0.5)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300",
+         "relative overflow-hidden bg-gradient-to-b from-[#7F00FF] via-[#9D50BB] to-[#33C3F0] text-white bg-[length:200%_200%] animate-gradient-y hover:ring-2 hover:ring-[#2b005a] backdrop-blur-md bg-opacity-80 shadow-[0_0_20px_rgba(127,0,255,0.3)] hover:shadow-[0_0_25px_rgba(127,0,255,0.5)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300",
         premium: 
           "relative overflow-hidden bg-gradient-to-r from-[#6A0DAD] via-[#8A2BE2] to-[#51117B] text-white shadow-[0_0_20px_rgba(106,13,173,0.3)] hover:shadow-[0_0_25px_rgba(106,13,173,0.5)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300",
         outline:
