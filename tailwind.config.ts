@@ -22,6 +22,7 @@ export default {
         sans: ["DM Sans", "sans-serif"],
         heading: ["Poppins", "sans-serif"],
       },
+      // tailwind.config.js
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -83,12 +84,18 @@ export default {
 					to: {
 						height: '0'
 					}
-				}
+				},
+         'gradient-y': {
+    '0%, 100%': { 'background-position': '50% 0%' },
+    '50%': { 'background-position': '50% 100%' },
+  },
+
 			},
       animation: {
         "fade-up": "fade-up 0.5s ease-out",
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+        'gradient-y': 'gradient-y 2 ease infinite',
       },
     },
   },
