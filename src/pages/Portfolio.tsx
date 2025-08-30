@@ -56,18 +56,18 @@ const Portfolio = () => {
 
   const thumbnailProjects = [
     {
-      title: "Cinematic Travel Film",
-      category: "Travel",
-      style: "Cinematic Style",
-      thumbnail: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=500&h=300&fit=crop",
-      description: "A visual journey through exotic locations",
+      title: "Design Spo",
+      category: "UX Design",
+      style: "Funky Style",
+      thumbnail: "https://res.cloudinary.com/dcnh1eltg/image/upload/v1756578124/Design_Spo_-_24_Web_Design_v4_rfkroo.jpg",
+      description: "A One Variation for my client George",
       views: "NEW"
     },
     {
       title: "Product Launch",
       category: "Corporate",
       style: "Commercial Style",
-      thumbnail: "https://images.unsplash.com/photo-1523712999610-f77fbcfc3843?w=500&h=300&fit=crop",
+      thumbnail: "https://res.cloudinary.com/dcnh1eltg/image/upload/v1756579509/shruti_ponugati_thumbnail_eeeobw.jpg",
       description: "High-end product showcase",
       views: "1.8M views"
     },
@@ -75,7 +75,7 @@ const Portfolio = () => {
       title: "Music Video Edit",
       category: "Music",
       style: "Podcast Style",
-      thumbnail: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?w=500&h=300&fit=crop",
+      thumbnail: "https://res.cloudinary.com/dcnh1eltg/image/upload/v1756579578/The_Blender_Render-Recovered_cwmfk9.jpg",
       description: "Dynamic music video editing",
       views: "5.2M views"
     },
@@ -83,7 +83,7 @@ const Portfolio = () => {
       title: "Wedding Highlights",
       category: "Wedding",
       style: "Romantic Style",
-      thumbnail: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=500&h=300&fit=crop",
+      thumbnail: "https://res.cloudinary.com/dcnh1eltg/image/upload/v1756579490/The_Admin_Bar_2_hxnvlg.jpg",
       description: "Romantic wedding cinematography",
       views: "892K views"
     },
@@ -91,7 +91,7 @@ const Portfolio = () => {
       title: "Corporate Documentary",
       category: "Corporate",
       style: "Documentary Style",
-      thumbnail: "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=500&h=300&fit=crop",
+      thumbnail: "https://res.cloudinary.com/dcnh1eltg/image/upload/v1756579442/Design_Spo_-_24_Web_Design_V1_rsrbtt.png",
       description: "Professional corporate storytelling",
       views: "1.1M views"
     },
@@ -99,7 +99,7 @@ const Portfolio = () => {
       title: "Action Sports",
       category: "Sports",
       style: "Action Style",
-      thumbnail: "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=500&h=300&fit=crop",
+      thumbnail: "https://res.cloudinary.com/dcnh1eltg/image/upload/v1756579816/ba1d0292-aebf-4c40-bab1-3757a110a9a1.png",
       description: "High-energy sports cinematography",
       views: "3.7M views"
     }
