@@ -59,7 +59,7 @@ const Portfolio = () => {
       title: "Cinematic Travel Film",
       category: "Travel",
       style: "Cinematic Style",
-      thumbnail: "\src\assets\images\Design Spo - 24 Web Design v4.jpg",
+      thumbnail: "/images/Design Spo - 24 Web Design v4.jpg",
       description: "A visual journey through exotic locations",
       views: "2.3M views"
     },
