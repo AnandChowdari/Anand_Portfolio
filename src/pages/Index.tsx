@@ -1,7 +1,23 @@
 import { Play } from 'lucide-react';
 import { ButtonGradient } from '@/components/ui/button-gradient';
 import { Link } from 'react-router-dom';
-
+const featuredProjects = [
+  {
+    title: 'Project One',
+    description: 'Professional Reels',
+    thumbnail: 'https://via.placeholder.com/400x225', // Replace with actual thumbnail URL
+  },
+  {
+    title: 'Project Two',
+    description: 'Animations and VFX',
+    thumbnail: 'https://via.placeholder.com/400x225', // Replace with actual thumbnail URL
+  },
+  {
+    title: 'Project Three',
+    description: 'Sound Design',
+    thumbnail: 'https://via.placeholder.com/400x225', // Replace with actual thumbnail URL
+  }
+]
 const Index = () => {
   return (
     <div className="min-h-screen">
@@ -23,7 +39,7 @@ const Index = () => {
               Hi, I'm Anand Chowdari, transforming raw footage into captivating stories that move hearts and inspire minds.
             </p>
             <div className="flex flex-wrap gap-4">
-              <ButtonGradient asChild size="lg">
+              <ButtonGradient variant='premium' asChild size="lg">
                 <Link to="/contact">
                   Hire Me
                 </Link>
@@ -31,7 +47,7 @@ const Index = () => {
               <ButtonGradient variant="outline" size="lg" asChild className="group">
                 <Link to="/portfolio" className="flex items-center gap-2">
                   <Play size={20} className="group-hover:text-primary transition-colors" />
-                  Watch Showreel
+                  Watch My Work
                 </Link>
               </ButtonGradient>
             </div>
