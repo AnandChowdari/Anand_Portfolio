@@ -10,9 +10,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "relative overflow-hidden bg-gradient-to-b from-[#51117B] via-[#8A2BE2] to-[#8807CD] text-white shadow-[0_0_20px_rgba(106,13,173,0.3)] hover:shadow-[0_0_25px_rgba(106,13,173,0.5)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300",
+          "relative overflow-hidden bg-gradient-to-b from-[#7908B8] via-[#8A2BE2] to-[#8807CD] text-white shadow-[0_0_20px_rgba(106,13,173,0.3)] hover:shadow-[0_0_25px_rgba(106,13,173,0.5)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300",
         premium: 
-          "relative overflow-hidden bg-gradient-to-r from-[#6A0DAD] via-[#8A2BE2] to-[#33C3F0] text-white shadow-[0_0_20px_rgba(106,13,173,0.3)] hover:shadow-[0_0_25px_rgba(106,13,173,0.5)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300",
+          "relative overflow-hidden bg-gradient-to-r from-[#6A0DAD] via-[#8A2BE2] to-[#51117B] text-white shadow-[0_0_20px_rgba(106,13,173,0.3)] hover:shadow-[0_0_25px_rgba(106,13,173,0.5)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300",
         outline:
           "border-2 border-primary/50 bg-background/50 text-primary backdrop-blur-sm hover:bg-primary/10 hover:border-primary transition-colors duration-300",
       },
