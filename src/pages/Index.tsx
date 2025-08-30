@@ -39,7 +39,7 @@ const Index = () => {
               Hi, I'm Anand Chowdari, transforming raw footage into captivating stories that move hearts and inspire minds.
             </p>
             <div className="flex flex-wrap gap-4">
-              <ButtonGradient variant='premium' asChild size="lg">
+              <ButtonGradient asChild size="lg">
                 <Link to="/contact">
                   Hire Me
                 </Link>
