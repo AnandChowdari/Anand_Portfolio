@@ -12,8 +12,8 @@ const Navbar = () => {
     { name: 'Portfolio', path: '/portfolio' },
     { name: 'Services', path: '/services' },
     { name: 'Testimonials', path: '/testimonials' },
-    { name: 'Contact', path: '/contact' },
     { name: 'About', path: '/about' },
+    { name: 'Contact', path: '/contact' }
   ];
 
   return (
@@ -76,4 +76,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+ export default Navbar;

@@ -193,47 +193,47 @@ const Portfolio = () => {
     </div>
   );
 
-  const renderThumbnails = () => (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {thumbnailProjects.map((project, index) => (
-        <Card 
-          key={index} 
-          className="group relative overflow-hidden bg-card/50 border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:scale-[1.02]"
-        >
-          <div className="aspect-video w-full overflow-hidden">
-            <img 
-              src={project.thumbnail} 
-              alt={project.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-            />
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div className="absolute bottom-0 p-4 w-full">
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-primary text-xs font-medium px-2 py-1 bg-primary/20 rounded-full">
-                  {project.category}
-                </span>
-                <span className="text-muted-foreground text-xs">{project.views}</span>
-              </div>
-              <div className="flex items-center justify-between mb-2">
-                <span className="text-accent text-xs font-medium px-2 py-1 bg-accent/20 rounded-full">
-                  {project.style}
-                </span>
-              </div>
-              <h3 className="text-lg font-bold text-foreground mb-1">{project.title}</h3>
-              <p className="text-muted-foreground mb-3 text-sm">{project.description}</p>
-              <a 
-                href="/contact" 
-                className="inline-flex items-center text-xs font-medium text-foreground hover:text-primary transition-colors bg-background/80 px-3 py-1.5 rounded border border-border/50 hover:border-primary/50"
-              >
-                Get Quote
-              </a>
+    const renderThumbnails = () => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {thumbnailProjects.map((project, index) => (
+          <Card 
+            key={index} 
+            className="group relative overflow-hidden bg-card/50 border-border/50 hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:scale-[1.02]"
+          >
+            <div className="aspect-video w-full overflow-hidden">
+              <img 
+                src={project.thumbnail} 
+                alt={project.title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
             </div>
-          </div>
-        </Card>
-      ))}
-    </div>
-  );
+            <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute bottom-0 p-4 w-full">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-primary text-xs font-medium px-2 py-1 bg-primary/20 rounded-full">
+                    {project.category}
+                  </span>
+                  <span className="text-muted-foreground text-xs">{project.views}</span>
+                </div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-accent text-xs font-medium px-2 py-1 bg-accent/20 rounded-full">
+                    {project.style}
+                  </span>
+                </div>
+                <h3 className="text-lg font-bold text-foreground mb-1">{project.title}</h3>
+                <p className="text-muted-foreground mb-3 text-sm">{project.description}</p>
+                <a 
+                  href="/contact" 
+                  className="inline-flex items-center text-xs font-medium text-foreground hover:text-primary transition-colors bg-background/80 px-3 py-1.5 rounded border border-border/50 hover:border-primary/50"
+                >
+                  Get Quote
+                </a>
+              </div>
+            </div>
+          </Card>
+        ))}
+      </div>
+    );
 
   const renderDefaultSection = () => (
     <div className="text-center py-20">
