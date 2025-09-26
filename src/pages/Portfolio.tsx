@@ -234,6 +234,20 @@ const Portfolio = () => {
         ))}
       </div>
     );
+  const renderMotionGraphicsSection = () => (
+  <div className="flex flex-col items-center py-10">
+    <h3 className="text-2xl font-bold text-gradient-purple mb-0.5 ">Motion Graphics Showcase</h3>
+    <p className="text-muted-foreground mb-4">Fake 3D - AE</p>
+    <video
+      src="/Motion Graphics - Grey.mp4"
+      autoPlay
+      loop
+      muted
+      playsInline
+      className="rounded-lg shadow-lg w-full max-w-3xl"
+    />
+  </div>
+);
 
   const renderDefaultSection = () => (
     <div className="text-center py-20">
@@ -296,7 +310,8 @@ const Portfolio = () => {
           
           {activeSection === 'video-edits' && renderVideoEdits()}
           {activeSection === 'thumbnails' && renderThumbnails()}
-          {['motion-graphics', 'commercial', 'short-films'].includes(activeSection) && renderDefaultSection()}
+          {activeSection === 'motion-graphics' && renderMotionGraphicsSection()}
+          {['commercial', 'short-films'].includes(activeSection) && renderDefaultSection()}
         </div>
       </div>
     </div>
