@@ -1,6 +1,8 @@
 import type { Config } from "tailwindcss";
 
 export default {
+  safelist: ['fade-grid'],
+
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
