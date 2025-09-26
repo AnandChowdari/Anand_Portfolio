@@ -99,3 +99,29 @@
 .accordion-up {
   animation: accordion-up 0.2s ease-out;
 }
+
+.fade-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+
+  animation: fadeInGrid 2s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInGrid {
+  from {
+    opacity: 0;
+    transform: scale(1.05);
+  }
+  to {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+}

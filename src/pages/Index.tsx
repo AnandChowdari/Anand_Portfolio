@@ -21,12 +21,18 @@ const featuredProjects = [
 const Index = () => {
   return (
     <div className="min-h-screen">
+ 
+
+      {/* Main content */}
+
       {/* Hero Section */}
       <div className="relative h-screen flex items-center">
         {/* Video Background with new styling */}
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/80 to-background z-10" />
+          
           <div className="bg-[url('https://images.unsplash.com/photo-1536240478700-b869070f9279?ixlib=rb-4.0.3')] bg-cover bg-center h-full w-full opacity-30 scale-110 animate-[pulse_4s_ease-in-out_infinite]" />
+   <div className="absolute inset-0 z-10 pointer-events-none fade-grid mix-blend-overlay" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/80 to-background z-20" />
         </div>
 
         {/* Content */}
