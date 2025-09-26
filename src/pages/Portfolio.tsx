@@ -88,7 +88,7 @@ const Portfolio = () => {
     views: "NEW"
   },
   {
-    title: "Admin Bar Wedding",
+    title: "Admin Bar Client",
     // category: "Wedding"
     // style: "Romantic Style"
     // description: "Romantic wedding cinematography"
@@ -234,12 +234,12 @@ const Portfolio = () => {
         ))}
       </div>
     );
-  const renderMotionGraphicsSection = () => (
+const renderMotionGraphicsSection = () => (
   <div className="flex flex-col items-center py-10">
-    <h3 className="text-2xl font-bold text-gradient-purple mb-0.5 ">Motion Graphics Showcase</h3>
-    <p className="text-muted-foreground mb-4">Fake 3D - AE</p>
+    <h3 className="text-2xl font-bold text-gradient-purple mb-0.2 tracking-tighter">Motion Graphics Showcase</h3>
+    <p className="text-muted-foreground mb-3 tracking-tighter">Dynamic animations and effects in action.</p>
     <video
-      src="/Motion Graphics - Grey.mp4"
+      src="https://res.cloudinary.com/dcnh1eltg/video/upload/v1758885463/Shot_0_oj1nv3.mp4"
       autoPlay
       loop
       muted
@@ -265,7 +265,7 @@ const Portfolio = () => {
           <h1 className="text-4xl md:text-6xl font-bold text-gradient mb-6">
             Portfolio
           </h1>
-          <p className="text-xl text-muted-foreground mb-12 max-w-2xl">
+          <p className="text-xl text-muted-foreground mb-1 max-w-2xl">
             Explore my creative journey through video editing, motion graphics, and visual storytelling.
           </p>
         </div>
