@@ -1,78 +1,158 @@
 
+import React, { useRef, useState } from 'react';
 import { ButtonGradient } from '@/components/ui/button-gradient';
-import { Link } from 'react-router-dom';
-import { FilmIcon, Instagram, Youtube, Video, Palette } from 'lucide-react';
 
+/* Single-row plans with equal sizes and 3D tilt on hover */
 const Services = () => {
-  const services = [
+  const plans = [
     {
-      icon: Youtube,
-      title: "YouTube Video Editing",
-      description: "Professional editing for YouTube content creators, including engaging intros, smooth transitions, and compelling storytelling.",
-      features: ["Custom Thumbnails", "Engaging Transitions", "Sound Design", "End Screens"]
+      key: 'ReelsStarter',
+      name: 'Reels Starter Plan',
+      price: '₹8,000 / month',
+      bullets: [
+        '4–5 Instagram / YouTube reels',
+        'Clean cuts + captions',
+        'Trend-based pacing',
+        'Fast turnaround',
+      ],
+      message: "Hi Anand, I'm interested in the Reels Starter Plan.",
     },
     {
-      icon: Instagram,
-      title: "Reels and Short Videos",
-      description: "Eye-catching short-form content optimized for Instagram, TikTok, and YouTube Shorts.",
-      features: ["Vertical Optimization", "Trending Effects", "Music Integration", "Call-to-Actions"]
+      key: 'StarterCreator',
+      name: 'Starter Creator Plan',
+      price: '₹12,000 / month',
+      bullets: [
+        '6–8 reels / shorts',
+        'Clean edits + captions',
+        'Basic motion graphics',
+      ],
+      message: "Hi Anand, I'm interested in the Starter Creator Plan.",
     },
     {
-      icon: FilmIcon,
-      title: "Cinematic Edits",
-      description: "High-quality cinematic editing for films, documentaries, and promotional content.",
-      features: ["Color Grading", "Visual Effects", "Sound Design", "Narrative Flow"]
+      key: 'GrowthPro',
+      name: 'Growth Pro Plan',
+      price: '₹25,000 / month',
+      badge: 'MOST POPULAR',
+      bullets: [
+        '12–15 high-retention reels',
+        'Story-driven editing',
+        'Advanced motion graphics',
+        'Faster turnaround & priority communication',
+      ],
+      message: "Hi Anand, I'm interested in the Growth Pro Plan (Most Popular).",
     },
     {
-      icon: Palette,
-      title: "Color Grading",
-      description: "Professional color correction and grading to enhance the visual appeal of your content.",
-      features: ["Color Correction", "Look Development", "Style Matching", "HDR Support"]
+      key: 'PerformanceBrand',
+      name: 'Performance Brand Plan',
+      price: '₹45,000+ / month (Custom)',
+      bullets: [
+        'Motion-heavy reels & explainers',
+        'SaaS-style storytelling',
+        'Conversion-focused visuals',
+        'Priority delivery & strategy support',
+      ],
+      message: "Hi Anand, I'm interested in the Performance Brand Plan.",
     },
-    {
-      icon: Video,
-      title: "Corporate Videos",
-      description: "Professional video editing for business presentations, product launches, and corporate communications.",
-      features: ["Brand Consistency", "Professional Polish", "Clear Messaging", "Quick Turnaround"]
-    }
   ];
+
+  const PlanCard: React.FC<{ plan: any; isPopular?: boolean }> = ({ plan, isPopular }) => {
+    const ref = useRef<HTMLDivElement | null>(null);
+    const [style, setStyle] = useState<React.CSSProperties>({ transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg)' });
+
+    function handleMove(e: React.MouseEvent) {
+      const el = ref.current;
+      if (!el) return;
+      const rect = el.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width; // 0..1
+      const py = (e.clientY - rect.top) / rect.height; // 0..1
+      const rotateX = (py - 0.5) * 12; // tilt intensity
+      const rotateY = (px - 0.5) * -12;
+      setStyle({ transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`, transition: 'transform 100ms linear' });
+    }
+
+    function handleLeave() {
+      setStyle({ transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg)', transition: 'transform 400ms cubic-bezier(.2,.9,.3,1)' });
+    }
+
+    return (
+      <div className="flex-1 min-w-0">
+        <div
+          ref={ref}
+          onMouseMove={handleMove}
+          onMouseLeave={handleLeave}
+          className={`relative w-full h-full rounded-2xl overflow-visible`}>
+          <div
+            style={style}
+            className={`h-full rounded-2xl p-8 bg-black/50 border border-border flex flex-col justify-between transition-shadow duration-300 will-change-transform ${
+              isPopular ? 'shadow-[0_30px_80px_rgba(155,135,245,0.22)] ring-1 ring-primary/30 scale-[1.02]' : 'hover:shadow-[0_18px_50px_rgba(155,135,245,0.08)]'
+            }`}
+          >
+            {isPopular && (
+              <div className="absolute -top-5 right-6">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-gradient-to-r from-primary/80 to-accent/80 text-black shadow-md">
+                  {plan.badge}
+                </span>
+              </div>
+            )}
+
+            <div>
+              <h3 className="text-2xl font-extrabold text-white">{plan.name}</h3>
+              <div className="mt-3">
+                <span className="text-3xl font-bold text-gradient-purple">{plan.price}</span>
+              </div>
+
+              <ul className="mt-6 space-y-2">
+                {plan.bullets.map((b: string, i: number) => (
+                  <li key={i} className="text-gray-300 text-sm flex items-start gap-3">
+                    <span className="mt-1 w-2 h-2 rounded-full bg-primary/80" />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="mt-6">
+              <ButtonGradient asChild>
+                <a
+                  href={`/?plan=${encodeURIComponent(plan.key)}&message=${encodeURIComponent(plan.message)}#contact`}
+                  className="inline-flex w-full items-center justify-center px-6 py-3 rounded-lg text-sm font-semibold"
+                >
+                  Select This!
+                </a>
+              </ButtonGradient>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="min-h-screen pt-16">
-      {/* Hero Section */}
+      {/* Hero */}
       <div className="bg-gradient-to-b from-background to-black/50 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent mb-6">
-            Services
-          </h1>
-          <p className="text-xl text-gray-300 mb-8 max-w-3xl">
-            Professional video editing services tailored to your needs. From YouTube content to cinematic films, I help bring your vision to life.
-          </p>
-          <ButtonGradient asChild>
-            <Link to="/contact">Get Started</Link>
-          </ButtonGradient>
+          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent mb-6">Plans & Pricing</h1>
+          <p className="text-xl text-gray-300 mb-8 max-w-3xl">Choose a plan tailored to growth, retention, and conversions — dark, cinematic creative matched to your brand.</p>
         </div>
       </div>
 
-      {/* Services Grid */}
+      {/* Single-row plans: horizontal on large screens, scrollable on small */}
       <div className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
-              <div key={index} className="p-6 rounded-lg bg-black/30 border border-border hover:border-primary/50 transition-all duration-300 hover:transform hover:scale-105">
-                <service.icon className="w-12 h-12 text-primary mb-6" />
-                <h3 className="text-xl font-bold mb-4">{service.title}</h3>
-                <p className="text-gray-400 mb-6">{service.description}</p>
-                <ul className="space-y-2">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="text-gray-300 flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          <div className="flex gap-6 lg:gap-8 overflow-x-auto lg:overflow-visible py-2" style={{ perspective: '1200px' }}>
+            {/* Each card gets equal width */}
+            <div className="flex w-full gap-6">
+              {plans.map((plan) => (
+                <div key={plan.key} className="flex-1 min-w-[260px] lg:min-w-0 lg:flex-1">
+                  <PlanCard plan={plan} isPopular={plan.key === 'GrowthPro'} />
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-8 text-sm text-gray-400 max-w-3xl">
+            <p>Prices are indicative. Custom enterprise work, long-term retainers, and agency partnerships available — contact for custom quoting.</p>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@
 import { Play, Video, Camera, Zap, Briefcase, Film, X } from 'lucide-react';
 import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
+import Ribbons from "../components/Ribbons";
 
 const Portfolio = () => {
   const [activeSection, setActiveSection] = useState('video-edits');
@@ -258,18 +259,28 @@ const renderMotionGraphicsSection = () => (
 
   return (
     <div className="min-h-screen pt-16">
+      <div className="absolute inset-0 z-10">
+          <Ribbons
+            enableShaderEffect
+            enableFade
+            backgroundColor={[0, 0, 0, 0]}
+            colors={["#8E29DD"]}
+            baseThickness={25}
+            effectAmplitude={1.5}
+          />
+        </div>
       {/* Hero Section */}
-      <div className="bg-gradient-to-b from-background via-background/95 to-background/80 py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-accent/5"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <h1 className="text-4xl md:text-6xl font-bold text-gradient mb-6">
+
+   
+        <div className="max-w-7xl  bg-white/0.5 backdrop-blur-md rounded-3xl border border-white/20 p-8 md:p-12 mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <h1 className="text-4xl md:text-6xl font-bold text-gradient mb-2">
             Portfolio
           </h1>
           <p className="text-xl text-muted-foreground mb-1 max-w-2xl">
             Explore my creative journey through video editing, motion graphics, and visual storytelling.
           </p>
         </div>
-      </div>
+
 
       {/* Navigation Sections */}
       <div className="py-8 bg-background/80 backdrop-blur-sm border-b border-border/50 sticky top-16 z-40">
