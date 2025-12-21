@@ -1,6 +1,6 @@
 
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { ButtonGradient } from './ui/button-gradient';
 
@@ -16,6 +16,26 @@ const Navbar = () => {
     { name: 'Contact', path: '/contact' }
   ];
 
+  const navigate = useNavigate();
+
+  function handleNavClick(e: React.MouseEvent, path: string) {
+    e.preventDefault();
+    const id = path === '/' ? 'home' : path.replace(/^\//, '');
+    if (window.location.pathname === '/') {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        // fallback to updating hash
+        window.location.hash = id;
+      }
+    } else {
+      // navigate to root with hash — full navigation ensures Index mounts
+      window.location.href = `/#${id}`;
+    }
+    setIsOpen(false);
+  }
+
   return (
     <nav className="fixed w-full bg-background/80 backdrop-blur-lg z-50 border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -27,16 +47,17 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <Link
+              <a
                 key={item.name}
-                to={item.path}
-                className="text-gray-300 hover:text-white transition-colors"
+                href={item.path}
+                onClick={(e) => handleNavClick(e, item.path)}
+                className="text-gray-300 hover:text-white transition-colors cursor-pointer"
               >
                 {item.name}
-              </Link>
+              </a>
             ))}
             <ButtonGradient asChild>
-              <Link to="/contact">Hire Me</Link>
+              <a href="/contact" onClick={(e) => handleNavClick(e, '/contact')}>Hire Me</a>
             </ButtonGradient>
           </div>
 
@@ -56,17 +77,17 @@ const Navbar = () => {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
               {navItems.map((item) => (
-                <Link
+                <a
                   key={item.name}
-                  to={item.path}
+                  href={item.path}
                   className="block px-3 py-2 text-gray-300 hover:text-white transition-colors"
-                  onClick={() => setIsOpen(false)}
+                  onClick={(e) => handleNavClick(e, item.path)}
                 >
                   {item.name}
-                </Link>
+                </a>
               ))}
               <ButtonGradient asChild className="w-full mt-4">
-                <Link to="/contact">Hire Me</Link>
+                <a href="/contact" onClick={(e) => handleNavClick(e, '/contact')}>Hire Me</a>
               </ButtonGradient>
             </div>
           </div>
