@@ -92,7 +92,7 @@ const Services = () => {
           className={`relative w-full h-full rounded-2xl overflow-visible`}>
           <div
             style={style}
-            className={`h-full rounded-2xl p-8 bg-black/50 border border-border flex flex-col justify-between transition-shadow duration-300 will-change-transform ${
+            className={`h-full rounded-2xl p-6 md:p-8 bg-black/50 border border-border flex flex-col justify-between transition-shadow duration-300 will-change-transform ${
               isPopular ? 'shadow-[0_30px_80px_rgba(155,135,245,0.22)] ring-1 ring-primary/30 scale-[1.02]' : 'hover:shadow-[0_18px_50px_rgba(155,135,245,0.08)]'
             }`}
           >
@@ -146,11 +146,12 @@ const Services = () => {
       {/* Single-row plans: horizontal on large screens, scrollable on small */}
       <div className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <style>{`\n            /* Mobile: stack plans vertically and scale down each subsequent card */\n            @media (max-width: 767px) {\n              .plans-row { flex-direction: column; gap: 1rem; }\n              .plans-row .plan-card { min-width: auto !important; width: 100% !important; transform-origin: top center; transition: transform 300ms ease, opacity 300ms ease; }\n              .plans-row .plan-card:nth-child(1) { transform: scale(1); }\n              .plans-row .plan-card:nth-child(2) { transform: scale(0.96); }\n              .plans-row .plan-card:nth-child(3) { transform: scale(0.92); }\n              .plans-row .plan-card:nth-child(4) { transform: scale(0.88); }\n            }\n          `}</style>
           <div className="flex gap-6 lg:gap-8 overflow-x-auto lg:overflow-visible py-2" style={{ perspective: '1200px' }}>
             {/* Each card gets equal width */}
-            <div className="flex w-full gap-6">
+            <div className="plans-row flex w-full gap-6">
               {plans.map((plan) => (
-                <div key={plan.key} className="flex-1 min-w-[260px] lg:min-w-0 lg:flex-1">
+                <div key={plan.key} className="plan-card flex-1 min-w-[260px] lg:min-w-0 lg:flex-1">
                   <PlanCard plan={plan} isPopular={plan.key === 'GrowthPro'} />
                 </div>
               ))}
