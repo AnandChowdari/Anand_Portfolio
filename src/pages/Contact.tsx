@@ -2,13 +2,23 @@ import { ButtonGradient } from '@/components/ui/button-gradient';
 import { Instagram, Linkedin, Mail, Send } from 'lucide-react';
 import { db } from '../lib/firebase';
 import { collection, addDoc, Timestamp } from 'firebase/firestore';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useToast } from '@/components/ui/use-toast';
 import emailjs from 'emailjs-com'
 
 const Contact = () => {
   const { toast } = useToast();
   const [form, setForm] = useState({ name: '', email: '', message: '' });
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const message = params.get('message');
+    if (message) {
+      setForm((f) => ({ ...f, message }));
+    }
+  }, [location.search]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

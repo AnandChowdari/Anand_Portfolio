@@ -1,5 +1,6 @@
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ButtonGradient } from '@/components/ui/button-gradient';
 
 /* Single-row plans with equal sizes and 3D tilt on hover */
@@ -55,6 +56,8 @@ const Services = () => {
     },
   ];
 
+  const navigate = useNavigate();
+
   const PlanCard: React.FC<{ plan: any; isPopular?: boolean }> = ({ plan, isPopular }) => {
     const ref = useRef<HTMLDivElement | null>(null);
     const [style, setStyle] = useState<React.CSSProperties>({ transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg)' });
@@ -65,13 +68,19 @@ const Services = () => {
       const rect = el.getBoundingClientRect();
       const px = (e.clientX - rect.left) / rect.width; // 0..1
       const py = (e.clientY - rect.top) / rect.height; // 0..1
-      const rotateX = (py - 0.5) * 12; // tilt intensity
-      const rotateY = (px - 0.5) * -12;
+      const rotateX = (py - 1) * 12; // tilt intensity
+      const rotateY = (px - 1) * -12;
       setStyle({ transform: `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`, transition: 'transform 100ms linear' });
     }
 
     function handleLeave() {
       setStyle({ transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg)', transition: 'transform 400ms cubic-bezier(.2,.9,.3,1)' });
+    }
+
+    function handleSelect(e: React.MouseEvent) {
+      e.preventDefault();
+      const search = `?plan=${encodeURIComponent(plan.key)}&message=${encodeURIComponent(plan.message)}`;
+      navigate(`/contact${search}`);
     }
 
     return (
@@ -113,12 +122,9 @@ const Services = () => {
 
             <div className="mt-6">
               <ButtonGradient asChild>
-                <a
-                  href={`/?plan=${encodeURIComponent(plan.key)}&message=${encodeURIComponent(plan.message)}#contact`}
-                  className="inline-flex w-full items-center justify-center px-6 py-3 rounded-lg text-sm font-semibold"
-                >
+                <button onClick={handleSelect} type="button" className="inline-flex w-full items-center justify-center px-6 py-3 rounded-lg text-sm font-semibold">
                   Select This!
-                </a>
+                </button>
               </ButtonGradient>
             </div>
           </div>
