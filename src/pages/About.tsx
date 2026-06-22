@@ -3,36 +3,36 @@ import { useState } from 'react';
 
 const About = () => {
   const tools = [
-    { 
-      name: 'Adobe Premiere Pro', 
+    {
+      name: 'Adobe Premiere Pro',
       logo: 'https://www.adobe.com/content/dam/cc/icons/aftereffects.svg',
     },
-    { 
-      name: 'After Effects', 
+    {
+      name: 'After Effects',
       logo: 'https://www.adobe.com/content/dam/cc/icons/aftereffects.svg',
     },
-    { 
-      name: 'DaVinci Resolve', 
+    {
+      name: 'DaVinci Resolve',
       logo: 'https://www.blackmagicdesign.com/shared/fetch/ae02fc64e43e47a2',
     },
-    { 
-      name: 'Adobe Audition', 
+    {
+      name: 'Adobe Audition',
       logo: 'https://www.adobe.com/content/dam/cc/icons/audition.svg',
     },
-    { 
-      name: 'Adobe Illustrator', 
+    {
+      name: 'Adobe Illustrator',
       logo: 'https://www.adobe.com/content/dam/cc/icons/illustrator.svg',
     },
-    { 
-      name: 'Adobe Media Encoder', 
+    {
+      name: 'Adobe Media Encoder',
       logo: 'https://www.adobe.com/content/dam/cc/icons/mediaencoder.svg',
     },
-    { 
-      name: 'Blender', 
+    {
+      name: 'Blender',
       logo: 'https://www.blender.org/wp-content/uploads/2019/07/blender_logo_socket-blue.svg',
     },
-    { 
-      name: 'AI Tools', 
+    {
+      name: 'AI Tools',
       logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/ChatGPT_logo.svg/1024px-ChatGPT_logo.svg.png',
     },
   ];
@@ -59,7 +59,7 @@ const About = () => {
           <h2 className="text-3xl font-bold mb-12 bg-gradient-to-r from-primary to-[#33C3F0] bg-clip-text text-transparent">
             My Toolkit
           </h2>
-          
+
           <style>{`
             @keyframes slideInUp {
               from {
@@ -107,7 +107,7 @@ const About = () => {
             .tool-button:nth-child(7) { animation-delay: 0.7s, 1.2s; }
             .tool-button:nth-child(8) { animation-delay: 0.8s, 1.4s; }
           `}</style>
-          
+
           {/* Desktop Grid */}
           <div className="hidden md:flex md:flex-wrap gap-3 justify-start">
             {tools.map((tool) => (
@@ -116,8 +116,8 @@ const About = () => {
                 className="tool-button group flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-black/40 to-black/20 border border-border hover:border-primary/80 transition-all duration-300 hover:shadow-lg hover:shadow-primary/40 cursor-pointer"
               >
                 <div className="h-6 w-6 flex items-center justify-center">
-                  <img 
-                    src={tool.logo} 
+                  <img
+                    src={tool.logo}
                     alt={tool.name}
                     className="h-full w-full object-contain"
                     onError={(e) => {
@@ -142,8 +142,8 @@ const About = () => {
                   style={{ animationDelay: `${idx * 0.1}s` }}
                 >
                   <div className="h-6 w-6 flex items-center justify-center">
-                    <img 
-                      src={tool.logo} 
+                    <img
+                      src={tool.logo}
                       alt={tool.name}
                       className="h-full w-full object-contain"
                       onError={(e) => {

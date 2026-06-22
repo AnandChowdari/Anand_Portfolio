@@ -22,7 +22,7 @@ const Contact = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-     try {
+    try {
       await emailjs.send(
         'service_woapccs',     // Replace with your actual EmailJS service ID
         'template_9o6eqxf',    // Replace with your actual EmailJS template ID
