@@ -20,6 +20,13 @@ const Navbar = () => {
 
   function handleNavClick(e: React.MouseEvent, path: string) {
     e.preventDefault();
+    if (path === '/portfolio') {
+      navigate('/portfolio');
+      setIsOpen(false);
+      window.scrollTo(0, 0);
+      return;
+    }
+    
     const id = path === '/' ? 'home' : path.replace(/^\//, '');
     if (window.location.pathname === '/') {
       const el = document.getElementById(id);
@@ -38,24 +45,8 @@ const Navbar = () => {
 
   return (
     <nav className="fixed w-full z-50">
-      <style>{`
-        @keyframes gradientShift {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        .navbar-gradient {
-          background: linear-gradient(90deg, rgba(155,135,245,0.12), rgba(51,195,240,0.08), rgba(155,135,245,0.12));
-          background-size: 300% 300%;
-          animation: gradientShift 9s ease-in-out infinite;
-        }
-      `}</style>
-
-      {/* Animated gradient full-width background */}
-      <div className="absolute inset-0 navbar-gradient blur-3xl rounded-b-3xl pointer-events-none"></div>
-
       {/* Glass morphism container (full width but centered content) */}
-      <div className="relative backdrop-blur-3xl bg-white/6 border border-white/10 rounded-b-3xl">
+      <div className="relative backdrop-blur-xl bg-black/30 border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-14">
             <Link to="/" className="text-lg font-semibold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">

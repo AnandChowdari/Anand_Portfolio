@@ -21,8 +21,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["DM Sans", "sans-serif"],
-        heading: ["Poppins", "sans-serif"],
+        sans: ["Inter", "sans-serif"],
+        heading: ["Space Grotesk", "sans-serif"],
       },
       // tailwind.config.js
       colors: {
@@ -71,32 +71,32 @@ export default {
             transform: "translateY(0)",
           },
         },
-				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
-				},
-				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
-				},
-         'gradient-y': {
-    '0%, 100%': { 'background-position': '50% 0%' },
-    '50%': { 'background-position': '50% 100%' },
-  },
+        'accordion-down': {
+          from: {
+            height: '0'
+          },
+          to: {
+            height: 'var(--radix-accordion-content-height)'
+          }
+        },
+        'accordion-up': {
+          from: {
+            height: 'var(--radix-accordion-content-height)'
+          },
+          to: {
+            height: '0'
+          }
+        },
+        'gradient-y': {
+          '0%, 100%': { 'background-position': '50% 0%' },
+          '50%': { 'background-position': '50% 100%' },
+        },
 
-			},
+      },
       animation: {
         "fade-up": "fade-up 0.5s ease-out",
-				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out',
+        'accordion-down': 'accordion-down 0.2s ease-out',
+        'accordion-up': 'accordion-up 0.2s ease-out',
         'gradient-y': 'gradient-y 2 ease infinite',
       },
     },
