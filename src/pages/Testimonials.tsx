@@ -4,26 +4,33 @@ import { Star } from 'lucide-react';
 const Testimonials = () => {
   const testimonials = [
     {
-      name: "Alex Chen",
-      role: "YouTube Creator",
-      image: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21",
-      content: "Anand transformed my content with his exceptional editing skills. The attention to detail and creative transitions made my videos stand out.",
+      name: "Husain Basha",
+      role: "Founder, Husle Lifestyle",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d",
+      content: "Flogrit turned my successful business into a recognized personal brand. Their strategy generated over 16 million views across Instagram and YouTube in just weeks.",
       rating: 5
     },
     {
-      name: "Sarah Johnson",
-      role: "Marketing Director",
-      image: "https://images.unsplash.com/photo-1523712999610-f77fbcfc3843",
-      content: "Professional, creative, and always delivers on time. The corporate videos Anand edited for us received amazing feedback from our clients.",
+      name: "Nivas",
+      role: "Content Manager, Husain Basha Team",
+      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e",
+      content: "Anand breathes completely new life into the edit. Your creativity, fresh visual style, and ability to transform ideas into engaging content make a huge difference.",
       rating: 5
     },
     {
-      name: "Mike Williams",
-      role: "Independent Filmmaker",
-      image: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb",
-      content: "Working with Anand was a game-changer for my documentary. His storytelling ability through editing is truly remarkable.",
+      name: "Charan",
+      role: "Content Strategist, Husain Basha Team",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e",
+      content: "Anand actively contributes creative ideas that elevate every video beyond expectations. He combines technical excellence with genuine creative thinking.",
       rating: 5
     },
+    {
+      name: "Gurujyoth",
+      role: "Founder, Pilot Academy",
+      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7",
+      content: "He always goes an extra mile to produce the best outcome possible. Over his time working with us, we had about 50+ students enrolled. 10/10 recommended.",
+      rating: 5
+    }
   ];
 
   return (

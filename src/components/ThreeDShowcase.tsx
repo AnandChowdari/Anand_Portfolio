@@ -1,5 +1,6 @@
-import { useRef, useState, useEffect, useMemo } from 'react';
-import { motion, useInView } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Sparkles, Eye, EyeOff, ChevronDown, ChevronUp } from 'lucide-react';
 
 const OrbitVideoCard = ({ src, poster, style, className, isPlaying }: { 
   src: string; poster: string; style: React.CSSProperties; className?: string; isPlaying: boolean;
@@ -90,18 +91,16 @@ const OrbitRow = ({
         {items.map((item, idx) => {
           const angle = ((idx * angleStep) + currentAngle) * (Math.PI / 180);
           
-          // Position on ellipse (wider than tall for horizontal orbit feel)
+          // Position on ellipse
           const x = Math.sin(angle) * radius;
-          const z = Math.cos(angle); // -1 (back) to 1 (front)
+          const z = Math.cos(angle);
           
-          // Map z from [-1, 1] to scale and opacity
-          const normalizedZ = (z + 1) / 2; // 0 (back) to 1 (front)
-          const scale = 0.55 + normalizedZ * 0.45; // 0.55 to 1.0
-          const opacity = 0.3 + normalizedZ * 0.7; // 0.3 to 1.0
+          const normalizedZ = (z + 1) / 2;
+          const scale = 0.55 + normalizedZ * 0.45;
+          const opacity = 0.3 + normalizedZ * 0.7;
           const zIndex = Math.round(normalizedZ * 100);
           const blur = normalizedZ < 0.3 ? `blur(${(1 - normalizedZ) * 3}px)` : 'none';
           
-          // Only play videos strictly in the front arc (roughly 3-4 videos)
           const isPlaying = normalizedZ > 0.85;
 
           return (
@@ -125,7 +124,7 @@ const OrbitRow = ({
           );
         })}
 
-        {/* Subtle reflection/shadow underneath */}
+        {/* Subtle reflection */}
         <div 
           className="absolute w-2/3 left-1/2 -translate-x-1/2 pointer-events-none"
           style={{
@@ -140,8 +139,10 @@ const OrbitRow = ({
   );
 };
 
-/* ───────── Main 3D Showcase ───────── */
+/* ───────── Main 3D Showcase (Hidden by default, available on demand) ───────── */
 const ThreeDShowcase = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
   // All 16 vertical videos in ascending order
   const verticalVideos = [
     { src: '/videos/Nested Sequence 03.mp4', poster: '/videos/posters/Nested Sequence 03.jpg' },
@@ -178,36 +179,82 @@ const ThreeDShowcase = () => {
   ];
 
   return (
-    <motion.div 
-      initial={{ opacity: 0 }} 
-      whileInView={{ opacity: 1 }} 
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.8 }}
-      className="relative w-full overflow-hidden py-20 md:py-32 flex flex-col items-center justify-center gap-20 md:gap-28 bg-black"
-    >
-      {/* Subtle background glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-primary/15 blur-[150px] rounded-full pointer-events-none" />
+    <div className="relative w-full overflow-hidden py-12 md:py-16 bg-black">
+      {/* On-demand Toggle Card (Keeps homepage clean, allows revealing when desired) */}
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="p-6 sm:p-8 rounded-3xl glass-dark border border-white/10 bg-gradient-to-r from-white/[0.04] to-black/80 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+          <div className="space-y-1.5 text-center sm:text-left">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-mono font-medium">
+              <Sparkles size={13} />
+              Interactive 3D Motion Experience
+            </div>
+            <h3 className="text-xl sm:text-2xl font-heading font-bold text-white">
+              3D Orbit Video Showcase
+            </h3>
+            <p className="text-xs sm:text-sm text-gray-300 font-sans max-w-lg">
+              {isExpanded 
+                ? "Dual 3D rotating orbits currently active. Click below to hide." 
+                : "Explore High Performing Reels and Long Retention Intros orbiting in dynamic 3D space."}
+            </p>
+          </div>
 
-      {/* Top Orbit: Vertical Videos */}
-      <OrbitRow 
-        items={verticalVideos}
-        direction="cw"
-        cardWidth={200}
-        cardHeight={356}
-        label="High Performing Reels"
-        duration={35}
-      />
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="flex-shrink-0 px-6 py-3.5 rounded-xl bg-primary/25 hover:bg-primary/35 border border-primary/50 text-white text-sm font-semibold flex items-center gap-2.5 transition-all shadow-[0_0_25px_rgba(155,135,245,0.25)] hover:scale-105"
+          >
+            {isExpanded ? (
+              <>
+                <EyeOff size={16} className="text-primary" />
+                <span>Hide 3D Showcase</span>
+                <ChevronUp size={16} />
+              </>
+            ) : (
+              <>
+                <Eye size={16} className="text-primary" />
+                <span>Launch 3D Orbit Showcase</span>
+                <ChevronDown size={16} />
+              </>
+            )}
+          </button>
+        </div>
+      </div>
 
-      {/* Bottom Orbit: Horizontal Videos */}
-      <OrbitRow 
-        items={horizontalVideos}
-        direction="ccw"
-        cardWidth={400}
-        cardHeight={225}
-        label="Long Retention Intros"
-        duration={35}
-      />
-    </motion.div>
+      {/* Orbit Rows - Rendered strictly when expanded */}
+      <AnimatePresence>
+        {isExpanded && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="pt-16 pb-12 flex flex-col items-center justify-center gap-20 md:gap-28 overflow-hidden"
+          >
+            {/* Subtle background glow */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-primary/15 blur-[150px] rounded-full pointer-events-none" />
+
+            {/* Top Orbit: Vertical Videos */}
+            <OrbitRow 
+              items={verticalVideos}
+              direction="cw"
+              cardWidth={200}
+              cardHeight={356}
+              label="High Performing Reels"
+              duration={35}
+            />
+
+            {/* Bottom Orbit: Horizontal Videos */}
+            <OrbitRow 
+              items={horizontalVideos}
+              direction="ccw"
+              cardWidth={400}
+              cardHeight={225}
+              label="Long Retention Intros"
+              duration={35}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 

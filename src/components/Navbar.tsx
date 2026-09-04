@@ -1,43 +1,46 @@
-
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { useNavigate, Link, useLocation } from 'react-router-dom';
+import { Menu, X, FileText } from 'lucide-react';
 import { ButtonGradient } from './ui/button-gradient';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  const navItems = [
-    { name: 'Home', path: '/' },
-    { name: 'Portfolio', path: '/portfolio' },
-    { name: 'Services', path: '/services' },
-    { name: 'Testimonials', path: '/testimonials' },
-    { name: 'About', path: '/about' },
-    { name: 'Contact', path: '/contact' }
-  ];
-
+  const location = useLocation();
   const navigate = useNavigate();
 
-  function handleNavClick(e: React.MouseEvent, path: string) {
+  const navItems = [
+    { name: 'Home', path: '#home' },
+    { name: 'Work', path: '#work' },
+    { name: 'Case Studies', path: '#case-studies' },
+    { name: 'Testimonials', path: '#testimonials' },
+    { name: 'Resume', path: '/resume', isRoute: true },
+    { name: 'About', path: '#about' },
+    { name: 'Contact', path: '#contact' },
+  ];
+
+  function handleNavClick(e: React.MouseEvent, item: { name: string; path: string; isRoute?: boolean }) {
     e.preventDefault();
-    if (path === '/portfolio') {
-      navigate('/portfolio');
+
+    if (item.isRoute) {
+      navigate(item.path);
       setIsOpen(false);
       window.scrollTo(0, 0);
       return;
     }
-    
-    const id = path === '/' ? 'home' : path.replace(/^\//, '');
-    if (window.location.pathname === '/') {
+
+    const id = item.path.replace(/^#/, '');
+
+    if (location.pathname === '/') {
       const el = document.getElementById(id);
+      const nav = document.querySelector('nav');
+      const offset = nav ? (nav as HTMLElement).clientHeight : 0;
       if (el) {
-        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const top = el.getBoundingClientRect().top + window.pageYOffset - offset - 12;
+        window.scrollTo({ top, behavior: 'smooth' });
       } else {
-        // fallback to updating hash
         window.location.hash = id;
       }
     } else {
-      // navigate to root with hash — full navigation ensures Index mounts
       window.location.href = `/#${id}`;
     }
     setIsOpen(false);
@@ -46,10 +49,10 @@ const Navbar = () => {
   return (
     <nav className="fixed w-full z-50">
       {/* Glass morphism container (full width but centered content) */}
-      <div className="relative backdrop-blur-xl bg-black/30 border-b border-white/10">
+      <div className="relative backdrop-blur-xl bg-black/40 border-b border-white/10 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-14">
-            <Link to="/" className="text-lg font-semibold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+          <div className="flex items-center justify-between h-16">
+            <Link to="/" className="text-xl font-bold bg-gradient-to-r from-white via-white to-gray-400 bg-clip-text text-transparent hover:opacity-80 transition-opacity">
               Anand Chowdari
             </Link>
 
@@ -59,14 +62,16 @@ const Navbar = () => {
                 <a
                   key={item.name}
                   href={item.path}
-                  onClick={(e) => handleNavClick(e, item.path)}
-                  className="text-gray-200 hover:text-white transition-colors nav-link"
+                  onClick={(e) => handleNavClick(e, item)}
+                  className="text-sm font-medium text-gray-300 hover:text-white transition-colors nav-link"
                 >
                   {item.name}
                 </a>
               ))}
-              <ButtonGradient asChild>
-                <a href="/contact" onClick={(e) => handleNavClick(e, '/contact')}>Hire Me</a>
+              <ButtonGradient asChild size="sm">
+                <a href="#contact" onClick={(e) => handleNavClick(e, { name: 'Contact', path: '#contact' })}>
+                  Hire Me
+                </a>
               </ButtonGradient>
             </div>
 
@@ -75,6 +80,7 @@ const Navbar = () => {
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="text-gray-200 hover:text-white transition-colors p-2 rounded-md bg-transparent"
+                aria-label="Toggle menu"
               >
                 {isOpen ? <X size={20} /> : <Menu size={20} />}
               </button>
@@ -83,21 +89,25 @@ const Navbar = () => {
 
           {/* Mobile Navigation Menu */}
           {isOpen && (
-            <div className="md:hidden px-3 pb-3">
-              <div className="space-y-2">
+            <div className="md:hidden px-3 pb-4 pt-2 border-t border-white/10 bg-black/90 backdrop-blur-2xl rounded-b-2xl">
+              <div className="space-y-1">
                 {navItems.map((item) => (
                   <a
                     key={item.name}
                     href={item.path}
-                    className="block px-3 py-2 text-gray-200 hover:text-white transition-colors rounded-lg hover:bg-white/6"
-                    onClick={(e) => handleNavClick(e, item.path)}
+                    className="block px-3 py-2 text-base font-medium text-gray-200 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
+                    onClick={(e) => handleNavClick(e, item)}
                   >
                     {item.name}
                   </a>
                 ))}
-                <ButtonGradient asChild className="w-full mt-1">
-                  <a href="/contact" onClick={(e) => handleNavClick(e, '/contact')}>Hire Me</a>
-                </ButtonGradient>
+                <div className="pt-2">
+                  <ButtonGradient asChild className="w-full">
+                    <a href="#contact" onClick={(e) => handleNavClick(e, { name: 'Contact', path: '#contact' })}>
+                      Hire Me
+                    </a>
+                  </ButtonGradient>
+                </div>
               </div>
             </div>
           )}
@@ -107,4 +117,4 @@ const Navbar = () => {
   );
 };
 
- export default Navbar;
+export default Navbar;

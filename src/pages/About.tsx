@@ -41,14 +41,24 @@ const About = () => {
     <div className="min-h-screen pt-16">
       {/* Hero Section */}
       <div className="bg-gradient-to-b from-background to-black/50 py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent mb-6">
-            About Me
-          </h1>
-          <div className="max-w-3xl">
-            <p className="text-xl text-gray-300 mb-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center gap-12">
+          <div className="flex-1">
+            <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent mb-6">
+              About Me
+            </h1>
+            <p className="text-xl text-gray-300 mb-8 max-w-xl">
               I'm passionate about transforming raw footage into compelling stories that captivate and inspire. With over 5 years of experience in video editing, I specialize in creating content that leaves a lasting impression.
             </p>
+          </div>
+          <div className="flex-1 flex justify-center md:justify-end">
+            <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-2xl overflow-hidden border border-white/10 shadow-[0_0_40px_rgba(155,135,245,0.2)]">
+              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent mix-blend-overlay z-10"></div>
+              <img 
+                src="/anand-profile.jpeg" 
+                alt="Anand Profile" 
+                className="w-full h-full object-cover object-[center_20%] filter contrast-110" 
+              />
+            </div>
           </div>
         </div>
       </div>
