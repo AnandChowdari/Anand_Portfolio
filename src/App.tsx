@@ -6,10 +6,6 @@ import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-route
 import { AnimatePresence } from "framer-motion";
 import Navbar from "./components/Navbar";
 import Index from "./pages/Index";
-import About from "./pages/About";
-import Portfolio from "./pages/Portfolio";
-import Testimonials from "./pages/Testimonials";
-import Contact from "./pages/Contact";
 import Resume from "./pages/Resume";
 import NotFound from "./pages/NotFound";
 
@@ -21,12 +17,12 @@ const AnimatedRoutes = () => {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Index />} />
-        <Route path="/portfolio" element={<Portfolio />} />
         <Route path="/resume" element={<Resume />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/testimonials" element={<Testimonials />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/portfolio" element={<Navigate to="/#work" replace />} />
+        <Route path="/contact" element={<Navigate to="/#contact" replace />} />
+        <Route path="/testimonials" element={<Navigate to="/#results" replace />} />
         <Route path="/services" element={<Navigate to="/#work" replace />} />
+        <Route path="/about" element={<Navigate to="/#clients" replace />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </AnimatePresence>

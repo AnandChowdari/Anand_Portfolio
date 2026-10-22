@@ -1,33 +1,36 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
-import { Menu, X, FileText } from 'lucide-react';
-import { ButtonGradient } from './ui/button-gradient';
+import { Menu, X, MessageSquare } from 'lucide-react';
+import { siteConfig, getWhatsAppUrl } from '../config/site';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const location = useLocation();
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (totalHeight > 0) {
+        const progress = (window.scrollY / totalHeight) * 100;
+        setScrollProgress(Math.min(100, Math.max(0, progress)));
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const navItems = [
-    { name: 'Home', path: '#home' },
     { name: 'Work', path: '#work' },
-    { name: 'Case Studies', path: '#case-studies' },
-    { name: 'Testimonials', path: '#testimonials' },
-    { name: 'Resume', path: '/resume', isRoute: true },
-    { name: 'About', path: '#about' },
+    { name: 'Clients', path: '#clients' },
+    { name: 'Results', path: '#results' },
     { name: 'Contact', path: '#contact' },
   ];
 
-  function handleNavClick(e: React.MouseEvent, item: { name: string; path: string; isRoute?: boolean }) {
+  function handleNavClick(e: React.MouseEvent, item: { name: string; path: string }) {
     e.preventDefault();
-
-    if (item.isRoute) {
-      navigate(item.path);
-      setIsOpen(false);
-      window.scrollTo(0, 0);
-      return;
-    }
-
     const id = item.path.replace(/^#/, '');
 
     if (location.pathname === '/') {
@@ -35,7 +38,7 @@ const Navbar = () => {
       const nav = document.querySelector('nav');
       const offset = nav ? (nav as HTMLElement).clientHeight : 0;
       if (el) {
-        const top = el.getBoundingClientRect().top + window.pageYOffset - offset - 12;
+        const top = el.getBoundingClientRect().top + window.pageYOffset - offset - 10;
         window.scrollTo({ top, behavior: 'smooth' });
       } else {
         window.location.hash = id;
@@ -47,67 +50,109 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="fixed w-full z-50">
-      {/* Glass morphism container (full width but centered content) */}
-      <div className="relative backdrop-blur-xl bg-black/40 border-b border-white/10 shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
-            <Link to="/" className="text-xl font-bold bg-gradient-to-r from-white via-white to-gray-400 bg-clip-text text-transparent hover:opacity-80 transition-opacity">
-              Anand Chowdari
-            </Link>
+    <nav className="fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300">
+      <div className="relative backdrop-blur-xl bg-[#050507]/80 border-b border-white/[0.08]">
+        {/* 1.5px Hairline Reading Progress Bar */}
+        <div
+          className="absolute bottom-0 left-0 h-[1.5px] bg-gradient-to-r from-emerald-500/80 via-white to-emerald-400 transition-all duration-150 ease-out z-50"
+          style={{ width: `${scrollProgress}%` }}
+        />
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16 sm:h-20">
+            {/* Left: Brand */}
+            <div className="flex items-center gap-3">
+              <Link
+                to="/"
+                onClick={(e) => {
+                  if (location.pathname === '/') {
+                    e.preventDefault();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }
+                }}
+                className="group flex flex-col"
+              >
+                <span className="text-lg sm:text-xl font-heading font-extrabold text-white tracking-tight group-hover:text-neutral-300 transition-colors">
+                  {siteConfig.name}
+                </span>
+                <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest -mt-1 hidden sm:block">
+                  VSL Editor & Motion Designer
+                </span>
+              </Link>
+            </div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-6">
+            {/* Desktop Navigation Links */}
+            <div className="hidden md:flex items-center space-x-1 lg:space-x-2">
               {navItems.map((item) => (
                 <a
                   key={item.name}
                   href={item.path}
                   onClick={(e) => handleNavClick(e, item)}
-                  className="text-sm font-medium text-gray-300 hover:text-white transition-colors nav-link"
+                  className="px-3.5 py-1.5 rounded-lg text-xs lg:text-sm font-medium text-neutral-400 hover:text-white hover:bg-white/[0.04] transition-all duration-200"
                 >
                   {item.name}
                 </a>
               ))}
-              <ButtonGradient asChild size="sm">
-                <a href="#contact" onClick={(e) => handleNavClick(e, { name: 'Contact', path: '#contact' })}>
-                  Hire Me
-                </a>
-              </ButtonGradient>
             </div>
 
-            {/* Mobile Navigation Button */}
-            <div className="md:hidden">
+            {/* Desktop Direct WhatsApp CTA */}
+            <div className="hidden md:flex items-center gap-3">
+              <a
+                href={getWhatsAppUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-heading font-semibold text-xs transition-all duration-200 shadow-[0_2px_15px_rgba(16,185,129,0.3)] active:scale-[0.98]"
+              >
+                <MessageSquare size={14} className="fill-white" />
+                <span>Chat on WhatsApp</span>
+              </a>
+            </div>
+
+            {/* Mobile Navigation Trigger */}
+            <div className="flex md:hidden items-center gap-2">
+              <a
+                href={getWhatsAppUrl()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600/20 border border-emerald-500/30 text-emerald-400 text-xs font-mono font-medium"
+              >
+                <MessageSquare size={13} className="fill-emerald-400" />
+                <span>WhatsApp</span>
+              </a>
+
               <button
                 onClick={() => setIsOpen(!isOpen)}
-                className="text-gray-200 hover:text-white transition-colors p-2 rounded-md bg-transparent"
+                className="text-neutral-300 hover:text-white transition-colors p-2 rounded-lg bg-white/[0.04] border border-white/[0.08]"
                 aria-label="Toggle menu"
               >
-                {isOpen ? <X size={20} /> : <Menu size={20} />}
+                {isOpen ? <X size={18} /> : <Menu size={18} />}
               </button>
             </div>
           </div>
 
-          {/* Mobile Navigation Menu */}
+          {/* Mobile Navigation Dropdown */}
           {isOpen && (
-            <div className="md:hidden px-3 pb-4 pt-2 border-t border-white/10 bg-black/90 backdrop-blur-2xl rounded-b-2xl">
-              <div className="space-y-1">
-                {navItems.map((item) => (
-                  <a
-                    key={item.name}
-                    href={item.path}
-                    className="block px-3 py-2 text-base font-medium text-gray-200 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
-                    onClick={(e) => handleNavClick(e, item)}
-                  >
-                    {item.name}
-                  </a>
-                ))}
-                <div className="pt-2">
-                  <ButtonGradient asChild className="w-full">
-                    <a href="#contact" onClick={(e) => handleNavClick(e, { name: 'Contact', path: '#contact' })}>
-                      Hire Me
-                    </a>
-                  </ButtonGradient>
-                </div>
+            <div className="md:hidden px-3 pb-5 pt-2 border-t border-white/[0.08] bg-[#050507]/95 backdrop-blur-2xl rounded-b-2xl space-y-2">
+              {navItems.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.path}
+                  className="block px-4 py-2.5 text-base font-medium text-neutral-300 hover:text-white hover:bg-white/[0.06] rounded-xl transition-colors"
+                  onClick={(e) => handleNavClick(e, item)}
+                >
+                  {item.name}
+                </a>
+              ))}
+
+              <div className="pt-2">
+                <a
+                  href={getWhatsAppUrl()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-emerald-600 text-white font-heading font-semibold text-sm shadow-lg"
+                >
+                  <MessageSquare size={16} className="fill-white" />
+                  <span>Start WhatsApp Chat</span>
+                </a>
               </div>
             </div>
           )}

@@ -57,7 +57,7 @@
   }
   
   .text-gradient-purple {
-    @apply bg-gradient-to-r from-primary via-[#9b87f5] to-[#33C3F0] bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent;
   }
   
   .glass {
