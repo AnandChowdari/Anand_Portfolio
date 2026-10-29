@@ -7,6 +7,7 @@ import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/compone
 export default function CaseStudies() {
   const [previewMedia, setPreviewMedia] = useState<{ src: string; title: string; aspect?: '9/16' | 'video' } | null>(null);
   const [activeHorizonCut, setActiveHorizonCut] = useState(0);
+  const [mobileCaseTab, setMobileCaseTab] = useState(0);
 
   const horizonCampaignCuts = [
     { label: 'Flagship Cut (34s)', src: '/videos/Nested Sequence 17.mp4', poster: '/videos/posters/Nested Sequence 17.jpg', title: 'Horizon Aviation — Flagship Admissions Reel', badge: '34s Flagship Cut' },
@@ -85,17 +86,17 @@ export default function CaseStudies() {
   ];
 
   return (
-    <section id="results" className="py-24 relative z-20 overflow-hidden bg-[#050507] border-y border-white/[0.08] scroll-mt-16">
+    <section id="results" className="py-16 sm:py-24 relative z-20 overflow-hidden bg-[#050507] border-y border-white/[0.08] scroll-mt-16">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/[0.08] bg-white/[0.04] text-neutral-300 text-xs font-mono uppercase tracking-widest mb-3"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/[0.08] bg-white/[0.04] text-neutral-300 text-[10px] sm:text-xs font-mono uppercase tracking-widest mb-3"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-white/70" />
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
             Case Studies
           </motion.div>
           <motion.h2
@@ -103,7 +104,7 @@ export default function CaseStudies() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-white tracking-tight"
+            className="text-2xl sm:text-4xl md:text-5xl font-heading font-extrabold text-white tracking-tight"
           >
             Real Work. Proven Results.
           </motion.h2>
@@ -112,10 +113,27 @@ export default function CaseStudies() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.15 }}
-            className="mt-3 text-neutral-400 text-sm sm:text-base font-sans"
+            className="mt-2.5 sm:mt-3 text-neutral-400 text-xs sm:text-base font-sans"
           >
             A closer look at how strategic editing, retention hooks, and pacing translated directly into watch time, brand growth, and closed revenue.
           </motion.p>
+        </div>
+
+        {/* Mobile Segmented Tab Switcher */}
+        <div className="flex sm:hidden items-center justify-center gap-2 mb-8 p-1 rounded-xl bg-white/[0.03] border border-white/[0.08] max-w-xs mx-auto">
+          {caseStudies.map((cs, idx) => (
+            <button
+              key={cs.id}
+              onClick={() => setMobileCaseTab(idx)}
+              className={`flex-1 py-2 px-2.5 rounded-lg text-xs font-heading font-semibold transition-all ${
+                mobileCaseTab === idx
+                  ? 'bg-white text-black shadow-md'
+                  : 'text-neutral-400 hover:text-white'
+              }`}
+            >
+              {cs.client.split(' ')[0]} ({cs.metrics[0].value})
+            </button>
+          ))}
         </div>
 
         {/* Detailed Case Study Cards */}
@@ -131,7 +149,9 @@ export default function CaseStudies() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="rounded-2xl border border-white/[0.08] overflow-hidden shadow-2xl bg-black/40 hover:border-white/20 transition-all duration-300"
+                className={`rounded-2xl border border-white/[0.08] overflow-hidden shadow-2xl bg-black/40 hover:border-white/20 transition-all duration-300 ${
+                  mobileCaseTab === index ? 'block' : 'hidden sm:block'
+                }`}
               >
                 <div className="p-6 sm:p-10 lg:p-12">
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">

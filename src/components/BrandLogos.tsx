@@ -64,18 +64,18 @@ export default function BrandLogos() {
   ];
 
   return (
-    <section id="clients" className="relative py-20 sm:py-24 bg-[#050507] border-y border-white/[0.08] overflow-hidden">
+    <section id="clients" className="relative py-14 sm:py-24 bg-[#050507] border-y border-white/[0.08] overflow-hidden">
       {/* Subtle radial ambient glow - monochrome silver/soft light */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-white/[0.02] rounded-full blur-[120px] pointer-events-none -z-10" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Human, approachable header */}
-        <div className="flex flex-col items-center text-center max-w-2xl mx-auto mb-16">
+        <div className="flex flex-col items-center text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-neutral-400 text-[11px] font-mono tracking-widest uppercase mb-4"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-neutral-400 text-[10px] sm:text-[11px] font-mono tracking-widest uppercase mb-3 sm:mb-4"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-white/70" />
             Proven Client Track Record
@@ -86,7 +86,7 @@ export default function BrandLogos() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-2xl sm:text-3xl md:text-4xl font-heading font-extrabold text-white tracking-tight leading-snug"
+            className="text-xl sm:text-3xl md:text-4xl font-heading font-extrabold text-white tracking-tight leading-snug"
           >
             Worked with 25+ clients and delivered immense value and results.
           </motion.h2>
@@ -96,27 +96,27 @@ export default function BrandLogos() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.15 }}
-            className="mt-3 text-neutral-400 text-sm sm:text-base font-sans max-w-lg"
+            className="mt-2.5 sm:mt-3 text-neutral-400 text-xs sm:text-base font-sans max-w-lg"
           >
             From high-ticket VSLs to multi-million view YouTube series — partnering with founders, creators, and media companies to scale their reach and conversions.
           </motion.p>
         </div>
 
         {/* Monochromatic Floating Circular Logos */}
-        <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 lg:gap-14 my-8">
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-10 lg:gap-14 my-4 sm:my-8">
           {brandLogos.map((brand, idx) => (
             <motion.div
               key={brand.id}
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.1, duration: 0.5 }}
-              className="flex flex-col items-center group cursor-default"
+              transition={{ delay: idx * 0.08, duration: 0.5 }}
+              className="flex flex-col items-center group cursor-default w-[85px] sm:w-auto"
             >
               {/* Floating Circular Emblem */}
               <motion.div
                 animate={{
-                  y: [0, -7, 0],
+                  y: [0, -5, 0],
                 }}
                 transition={{
                   repeat: Infinity,
@@ -124,16 +124,16 @@ export default function BrandLogos() {
                   ease: 'easeInOut',
                   delay: brand.delay,
                 }}
-                className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/[0.03] border border-white/[0.08] group-hover:border-white/30 group-hover:bg-white/[0.07] backdrop-blur-md flex items-center justify-center text-neutral-400 group-hover:text-white transition-all duration-300 shadow-[0_10px_35px_rgba(0,0,0,0.6)] group-hover:shadow-[0_12px_40px_rgba(255,255,255,0.08)] group-hover:scale-105"
+                className="w-13 h-13 sm:w-20 sm:h-20 rounded-full bg-white/[0.03] border border-white/[0.08] group-hover:border-white/30 group-hover:bg-white/[0.07] backdrop-blur-md flex items-center justify-center text-neutral-400 group-hover:text-white transition-all duration-300 shadow-[0_10px_35px_rgba(0,0,0,0.6)] group-hover:shadow-[0_12px_40px_rgba(255,255,255,0.08)] group-hover:scale-105"
               >
                 {brand.icon}
               </motion.div>
 
               {/* Minimalist Monochromatic Label */}
-              <span className="mt-3 text-xs sm:text-sm font-heading font-semibold text-neutral-300 group-hover:text-white transition-colors tracking-tight">
+              <span className="mt-2 sm:mt-3 text-[11px] sm:text-sm font-heading font-semibold text-neutral-300 group-hover:text-white transition-colors tracking-tight text-center">
                 {brand.name}
               </span>
-              <span className="text-[10px] font-mono text-neutral-400">
+              <span className="text-[9px] sm:text-[10px] font-mono text-neutral-400 text-center">
                 {brand.role}
               </span>
             </motion.div>
@@ -141,22 +141,22 @@ export default function BrandLogos() {
         </div>
 
         {/* Minimalist Stat Strip */}
-        <div className="mt-16 pt-8 border-t border-white/[0.06] grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-          <div>
-            <p className="text-2xl sm:text-3xl font-heading font-extrabold text-white">25+</p>
-            <p className="text-xs text-neutral-400 font-sans mt-0.5">Clients & Brands</p>
+        <div className="mt-10 sm:mt-16 pt-6 sm:pt-8 border-t border-white/[0.06] grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 text-center">
+          <div className="p-2 sm:p-0">
+            <p className="text-xl sm:text-3xl font-heading font-extrabold text-white">25+</p>
+            <p className="text-[11px] sm:text-xs text-neutral-400 font-sans mt-0.5">Clients & Brands</p>
           </div>
-          <div>
-            <p className="text-2xl sm:text-3xl font-heading font-extrabold text-white">50M+</p>
-            <p className="text-xs text-neutral-400 font-sans mt-0.5">Total Organic Views</p>
+          <div className="p-2 sm:p-0">
+            <p className="text-xl sm:text-3xl font-heading font-extrabold text-white">50M+</p>
+            <p className="text-[11px] sm:text-xs text-neutral-400 font-sans mt-0.5">Total Organic Views</p>
           </div>
-          <div>
-            <p className="text-2xl sm:text-3xl font-heading font-extrabold text-white">16M+</p>
-            <p className="text-xs text-neutral-400 font-sans mt-0.5">Hustle Lifestyle Reach</p>
+          <div className="p-2 sm:p-0">
+            <p className="text-xl sm:text-3xl font-heading font-extrabold text-white">16M+</p>
+            <p className="text-[11px] sm:text-xs text-neutral-400 font-sans mt-0.5">Hustle Lifestyle Reach</p>
           </div>
-          <div>
-            <p className="text-2xl sm:text-3xl font-heading font-extrabold text-white">3.8x</p>
-            <p className="text-xs text-neutral-400 font-sans mt-0.5">Conversion Rate Lift</p>
+          <div className="p-2 sm:p-0">
+            <p className="text-xl sm:text-3xl font-heading font-extrabold text-white">3.8x</p>
+            <p className="text-[11px] sm:text-xs text-neutral-400 font-sans mt-0.5">Conversion Rate Lift</p>
           </div>
         </div>
       </div>

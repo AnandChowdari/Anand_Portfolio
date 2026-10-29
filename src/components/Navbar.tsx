@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { Menu, X, MessageSquare } from 'lucide-react';
+import { useLenis } from 'lenis/react';
 import { siteConfig, getWhatsAppUrl } from '../config/site';
 
 const Navbar = () => {
@@ -8,6 +9,7 @@ const Navbar = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
   const location = useLocation();
   const navigate = useNavigate();
+  const lenis = useLenis();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,8 +40,12 @@ const Navbar = () => {
       const nav = document.querySelector('nav');
       const offset = nav ? (nav as HTMLElement).clientHeight : 0;
       if (el) {
-        const top = el.getBoundingClientRect().top + window.pageYOffset - offset - 10;
-        window.scrollTo({ top, behavior: 'smooth' });
+        if (lenis) {
+          lenis.scrollTo(el, { offset: -offset - 12, duration: 1.2 });
+        } else {
+          const top = el.getBoundingClientRect().top + window.pageYOffset - offset - 10;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
       } else {
         window.location.hash = id;
       }

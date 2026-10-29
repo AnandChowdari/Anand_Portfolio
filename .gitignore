@@ -21,5 +21,11 @@ dist-ssr
 *.ntvs*
 *.njsproj
 *.sln
-*.sw?
 .vercel
+
+# Raw uncompressed video working assets (exceeds GitHub 100MB limit)
+Vertical/Ad 3.mp4
+Vertical/Dubai Airshow - 1_1.mp4
+Vertical/Quantum Computers Ep-2.mp4
+Vertical/Russian Helicopter.mp4
+Vertical/What is Color of a Mirror.mp4

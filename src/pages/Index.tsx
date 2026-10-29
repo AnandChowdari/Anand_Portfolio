@@ -42,7 +42,7 @@ const Index = () => {
       <FilmGrain />
 
       {/* ================= EDITORIAL HERO SECTION ================= */}
-      <section id="home" className="relative pt-28 sm:pt-36 pb-16 lg:pb-20 overflow-hidden">
+      <section id="home" className="relative pt-20 sm:pt-32 pb-10 sm:pb-16 lg:pb-20 overflow-hidden">
         {/* Subtle Ambient Background Light */}
         <GradientMesh />
 
@@ -52,10 +52,11 @@ const Index = () => {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-neutral-300 text-xs font-mono mb-8"
+            className="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-white/[0.04] border border-white/[0.08] text-neutral-300 text-[10px] sm:text-xs font-mono mb-3.5 sm:mb-6"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-            <span>HYDERABAD, IN [UTC+5:30] — AVAILABLE FOR Q4 COMMISSIONS</span>
+            <span className="sm:hidden">HYDERABAD • AVAILABLE FOR WORK</span>
+            <span className="hidden sm:inline">HYDERABAD, IN [UTC+5:30] — AVAILABLE FOR Q4 COMMISSIONS</span>
           </motion.div>
 
           {/* Large Centered Editorial Title with Serif Accent */}
@@ -63,7 +64,7 @@ const Index = () => {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl sm:text-7xl lg:text-8xl font-heading font-extrabold text-white tracking-tight leading-none"
+            className="text-3xl sm:text-6xl md:text-7xl lg:text-8xl font-heading font-extrabold text-white tracking-tight leading-tight sm:leading-none"
           >
             {siteConfig.name}
           </motion.h1>
@@ -72,8 +73,8 @@ const Index = () => {
           <motion.p
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="mt-5 text-xl sm:text-2xl lg:text-3xl font-heading font-bold text-neutral-200 tracking-tight"
+            transition={{ duration: 0.6, delay: 0.15 }}
+            className="mt-1.5 sm:mt-3 text-sm sm:text-xl lg:text-2xl font-heading font-semibold text-neutral-200 tracking-wide"
           >
             VSL Video Editor & Motion Designer
           </motion.p>
@@ -82,36 +83,37 @@ const Index = () => {
           <motion.p
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="mt-4 text-base sm:text-lg text-neutral-400 font-sans leading-relaxed max-w-2xl"
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="mt-2 sm:mt-3 text-xs sm:text-base text-neutral-400 font-sans leading-relaxed max-w-xl px-2 sm:px-0"
           >
-            I edit videos that people actually finish watching — and buy from. Over the past 5 years, I've delivered 50M+ views across YouTube, direct-response VSLs, and high-retention commercial cuts.
+            <span className="sm:hidden">50M+ views delivered across direct-response VSLs, YouTube series, and high-retention commercial cuts.</span>
+            <span className="hidden sm:inline">I edit videos that people actually finish watching — and buy from. Over the past 5 years, I've delivered 50M+ views across YouTube, direct-response VSLs, and high-retention commercial cuts.</span>
           </motion.p>
 
           {/* Centered Dual Action Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.35 }}
-            className="mt-8 flex flex-wrap items-center justify-center gap-4"
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="mt-3.5 sm:mt-6 flex items-center justify-center gap-2.5 sm:gap-4"
           >
             <a
               href={getWhatsAppUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-heading font-semibold text-sm transition-all duration-200 shadow-[0_4px_25px_rgba(16,185,129,0.3)] hover:shadow-[0_4px_35px_rgba(16,185,129,0.5)] active:scale-[0.98]"
+              className="inline-flex items-center gap-1.5 sm:gap-2.5 px-4 sm:px-6 py-2.5 sm:py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-heading font-semibold text-xs sm:text-sm transition-all duration-200 shadow-[0_4px_25px_rgba(16,185,129,0.3)] hover:shadow-[0_4px_35px_rgba(16,185,129,0.5)] active:scale-[0.98]"
             >
-              <MessageSquare size={17} className="fill-white" />
+              <MessageSquare size={15} className="fill-white" />
               <span>Chat on WhatsApp</span>
             </a>
 
             <a
               href="#work"
               onClick={(e) => handleScroll(e, 'work')}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.1] text-neutral-200 hover:text-white font-heading font-medium text-sm transition-colors duration-200"
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-6 py-2.5 sm:py-3.5 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.1] text-neutral-200 hover:text-white font-heading font-medium text-xs sm:text-sm transition-colors duration-200"
             >
-              <span>Explore Selected Works</span>
-              <ArrowRight size={16} />
+              <span>Explore Works</span>
+              <ArrowRight size={14} />
             </a>
           </motion.div>
 

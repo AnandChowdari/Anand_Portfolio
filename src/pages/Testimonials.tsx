@@ -39,24 +39,24 @@ const Testimonials = () => {
   ];
 
   return (
-    <div className="py-20 relative overflow-hidden bg-[#050507] border-b border-white/[0.08]">
+    <div className="py-14 sm:py-20 relative overflow-hidden bg-[#050507] border-b border-white/[0.08]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-neutral-300 text-xs font-mono uppercase tracking-widest mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-white/70" />
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-neutral-300 text-[10px] sm:text-xs font-mono uppercase tracking-widest mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
             Endorsements
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl font-heading font-extrabold text-white tracking-tight">
             What Collaborators Say
           </h2>
-          <p className="mt-3 text-neutral-400 text-sm sm:text-base">
+          <p className="mt-2.5 sm:mt-3 text-neutral-400 text-xs sm:text-base font-sans">
             Honest feedback from founders and content teams I've worked with side by side.
           </p>
         </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
+        {/* Testimonials Container: Horizontal Snap on Mobile, 4-col Grid on Desktop */}
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-3.5 pb-4 sm:pb-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-5 no-scrollbar">
           {testimonials.map((testimonial, index) => (
             <motion.div
               key={index}
@@ -65,7 +65,7 @@ const Testimonials = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.08, duration: 0.5 }}
               whileHover={{ y: -3 }}
-              className="p-6 rounded-2xl bg-black/40 border border-white/[0.08] hover:border-white/20 flex flex-col justify-between backdrop-blur-md transition-all duration-300"
+              className="min-w-[85vw] sm:min-w-0 snap-center p-5 sm:p-6 rounded-2xl bg-black/40 border border-white/[0.08] hover:border-white/20 flex flex-col justify-between backdrop-blur-md transition-all duration-300 flex-shrink-0"
             >
               <div>
                 <div className="flex items-center justify-between mb-4">
@@ -79,7 +79,7 @@ const Testimonials = () => {
                   </span>
                 </div>
 
-                <p className="text-neutral-300 text-sm leading-relaxed mb-6 font-sans">
+                <p className="text-neutral-300 text-xs sm:text-sm leading-relaxed mb-6 font-sans">
                   "{testimonial.content}"
                 </p>
               </div>
@@ -95,17 +95,22 @@ const Testimonials = () => {
                 </div>
                 <div className="min-w-0 flex-1">
                   <div className="flex items-center gap-1.5 flex-wrap">
-                    <h3 className="font-heading font-bold text-sm text-white truncate">{testimonial.name}</h3>
+                    <h3 className="font-heading font-bold text-xs sm:text-sm text-white truncate">{testimonial.name}</h3>
                     <span className="inline-flex items-center text-[9px] font-mono font-medium text-emerald-400 bg-emerald-500/10 px-1 py-0.2 rounded border border-emerald-500/20">
                       ✓
                     </span>
                   </div>
-                  <p className="text-xs text-neutral-400 truncate">{testimonial.role}</p>
+                  <p className="text-[11px] text-neutral-400 truncate">{testimonial.role}</p>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
+
+        {/* Mobile Swipe Hint */}
+        <p className="sm:hidden text-center text-[10px] font-mono text-neutral-400 mt-2">
+          ← Swipe to view more reviews →
+        </p>
       </div>
     </div>
   );

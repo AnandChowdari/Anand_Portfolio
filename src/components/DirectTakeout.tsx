@@ -46,15 +46,15 @@ export default function DirectTakeout() {
   };
 
   return (
-    <section id="contact" className="py-24 relative overflow-hidden bg-[#050507]">
+    <section id="contact" className="py-16 sm:py-24 relative overflow-hidden bg-[#050507]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-neutral-300 text-xs font-mono uppercase tracking-widest mb-3"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/[0.08] text-neutral-300 text-[10px] sm:text-xs font-mono uppercase tracking-widest mb-3"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             Let's Talk
@@ -64,7 +64,7 @@ export default function DirectTakeout() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-white tracking-tight"
+            className="text-2xl sm:text-4xl md:text-5xl font-heading font-extrabold text-white tracking-tight"
           >
             Start a Conversation
           </motion.h2>
@@ -73,21 +73,21 @@ export default function DirectTakeout() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.15 }}
-            className="mt-3 text-neutral-400 text-sm sm:text-base font-sans"
+            className="mt-2.5 sm:mt-3 text-neutral-400 text-xs sm:text-base font-sans"
           >
             Whether you need a high-converting VSL, recurring reels for your brand, or custom motion graphics — ping me directly on WhatsApp or drop a note below.
           </motion.p>
         </div>
 
         {/* Dual Primary Takeout Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-stretch max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 items-stretch max-w-5xl mx-auto">
           {/* Card 1: WhatsApp Straight Away (Primary Channel - 7 cols) */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="lg:col-span-7 rounded-2xl p-7 sm:p-9 bg-black/50 border border-white/[0.08] hover:border-emerald-500/30 shadow-2xl flex flex-col justify-between relative overflow-hidden backdrop-blur-xl group transition-all duration-300"
+            className="lg:col-span-7 rounded-2xl p-5 sm:p-9 bg-black/50 border border-white/[0.08] hover:border-emerald-500/30 shadow-2xl flex flex-col justify-between relative overflow-hidden backdrop-blur-xl group transition-all duration-300"
           >
             <div className="space-y-4 mb-8">
               <div className="flex items-center justify-between gap-4 mb-2">

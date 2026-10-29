@@ -4,6 +4,7 @@ import { Dialog, DialogContent, DialogTitle, DialogDescription } from '@/compone
 import { Carousel, CarouselContent, CarouselItem } from '@/components/ui/carousel';
 import { motion, AnimatePresence } from 'framer-motion';
 import AutoScroll from 'embla-carousel-auto-scroll';
+import VerticalVideoShowcase from './VerticalVideoShowcase';
 
 /* ───────── Hover-to-Play Video Card ─────────
    Decodes and plays ONLY when hovered by the cursor.
@@ -181,17 +182,17 @@ export default function PortfolioShowcase() {
   ];
 
   return (
-    <section id="work" className="py-24 relative z-20 overflow-hidden bg-[#050507]">
+    <section id="work" className="py-16 sm:py-24 relative z-20 overflow-hidden bg-[#050507]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-14">
+        <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-12">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/[0.08] bg-white/[0.04] text-neutral-300 text-xs font-mono uppercase tracking-widest mb-3"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-white/70" />
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
             Selected Works
           </motion.div>
           <motion.h2
@@ -199,42 +200,23 @@ export default function PortfolioShowcase() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-heading font-extrabold text-white tracking-tight"
+            className="text-2xl sm:text-4xl md:text-5xl font-heading font-extrabold text-white tracking-tight"
           >
-            Featured Productions
+            Featured Video Portfolio
           </motion.h2>
           <motion.p
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.15 }}
-            className="mt-3 text-neutral-400 text-sm sm:text-base font-sans"
+            className="mt-2.5 text-neutral-400 text-xs sm:text-base font-sans max-w-lg mx-auto"
           >
-            A curated selection of high-retention vertical edits. Hover over any video to preview, or click to open full theater mode.
+            Engineered for high algorithmic retention and paid acquisition. Center videos autoplay in real-time — swipe or slide to navigate.
           </motion.p>
         </div>
 
-        {/* ================= TOP 6 FEATURED VERTICAL GRID ================= */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-4 lg:gap-4 mb-12">
-          {top6Vertical.map((item, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.08, duration: 0.5 }}
-            >
-              <HoverVideoCard
-                src={item.src}
-                poster={item.poster}
-                title={item.title}
-                aspect="9/16"
-                badge={item.badge}
-                onClick={() => setModalMedia({ src: item.src, title: item.title, aspect: '9/16' })}
-              />
-            </motion.div>
-          ))}
-        </div>
+        {/* ================= 75% SCREEN SIDE-SLIDING AUTOPLAY SHOWCASE ================= */}
+        <VerticalVideoShowcase />
 
         {/* ================= UNVEIL MORE / EXPLORE FULL VAULT BUTTON ================= */}
         <div className="flex flex-col items-center justify-center my-10">
