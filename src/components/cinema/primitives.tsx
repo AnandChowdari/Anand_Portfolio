@@ -289,18 +289,31 @@ export function ClipCard({
   useEffect(() => {
     const v = ref.current;
     if (!v) return;
-    const io = new IntersectionObserver(
+    // 1) Attach the source only when the card is about to scroll into view (zero network before that).
+    const load = new IntersectionObserver(
       ([e]) => {
-        if (e.isIntersecting) {
-          if (v.preload !== 'auto') v.preload = 'auto';
-          v.play().catch(() => {});
-        } else v.pause();
+        if (e.isIntersecting && !v.src) {
+          v.src = clip.src;
+          load.disconnect();
+        }
       },
-      { threshold: 0.25, rootMargin: '120px 0px' },
+      { rootMargin: '300px 0px' },
     );
-    io.observe(v);
-    return () => io.disconnect();
-  }, []);
+    // 2) Play only while the card is genuinely on screen; pause the moment it leaves.
+    const play = new IntersectionObserver(
+      ([e]) => {
+        if (e.isIntersecting) v.play().catch(() => {});
+        else v.pause();
+      },
+      { threshold: 0.4 },
+    );
+    load.observe(v);
+    play.observe(v);
+    return () => {
+      load.disconnect();
+      play.disconnect();
+    };
+  }, [clip.src]);
 
   return (
     <figure className={`group flex flex-col ${className}`}>
@@ -313,12 +326,11 @@ export function ClipCard({
       >
         <video
           ref={ref}
-          src={clip.src}
           poster={clip.poster}
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="none"
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(.16,1,.3,1)] group-hover:scale-[1.04]"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/25 pointer-events-none" />

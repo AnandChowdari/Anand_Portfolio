@@ -44,7 +44,12 @@ export default function Hero({ ready }: { ready: boolean }) {
   const hudOpacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
 
   useEffect(() => {
-    if (ready) vid.current?.play().catch(() => {});
+    const v = vid.current;
+    if (!ready || !v || !wrap.current) return;
+    // Hero loop plays only while the hero is on screen.
+    const io = new IntersectionObserver(([e]) => (e.isIntersecting ? v.play().catch(() => {}) : v.pause()));
+    io.observe(wrap.current);
+    return () => io.disconnect();
   }, [ready]);
 
   const openReel = () => open({ src: showreel.src, poster: showreel.poster, title: showreel.title, aspect: 'horizontal' });
