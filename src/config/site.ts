@@ -9,9 +9,9 @@ export const siteConfig = {
    * Create two event types in Calendly and paste their URLs here.
    */
   calendly: {
-    project: 'https://calendly.com/astrophileanand/project-call',
+    project: 'https://calendly.com/astrophileanand/content-consultation',
     consult: 'https://calendly.com/astrophileanand/content-consultation',
-    mentor: 'https://calendly.com/astrophileanand/editor-mentorship',
+    mentor: 'https://calendly.com/astrophileanand/content-consultation',
   },
 
   email: {
