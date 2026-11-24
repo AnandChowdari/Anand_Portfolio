@@ -8,6 +8,8 @@ import { AnimatePresence } from "framer-motion";
 import { ReactLenis } from "lenis/react";
 import "lenis/dist/lenis.css";
 import Navbar from "./components/Navbar";
+import { BookingProvider, LightboxProvider } from "./components/cinema/primitives";
+import { siteConfig } from "./config/site";
 import Index from "./pages/Index";
 import Resume from "./pages/Resume";
 import NotFound from "./pages/NotFound";
@@ -49,16 +51,20 @@ const App = () => (
         root
         options={{
           lerp: 0.085,
-          duration: 1.2,
           smoothWheel: true,
+          anchors: { offset: 0, duration: 1.6 },
           wheelMultiplier: 1.0,
           touchMultiplier: 1.2,
         }}
       >
         <BrowserRouter>
-          <ScrollToTop />
-          <Navbar />
-          <AnimatedRoutes />
+          <LightboxProvider>
+            <BookingProvider links={siteConfig.calendly}>
+              <ScrollToTop />
+              <Navbar />
+              <AnimatedRoutes />
+            </BookingProvider>
+          </LightboxProvider>
         </BrowserRouter>
       </ReactLenis>
     </TooltipProvider>

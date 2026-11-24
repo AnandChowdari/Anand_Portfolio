@@ -21,11 +21,17 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "sans-serif"],
-        heading: ["Space Grotesk", "sans-serif"],
+        sans: ["Inter Tight", "Inter", "sans-serif"],
+        heading: ["Inter Tight", "sans-serif"],
+        serif: ["Instrument Serif", "Georgia", "serif"],
+        mono: ["JetBrains Mono", "ui-monospace", "monospace"],
       },
       // tailwind.config.js
       colors: {
+        ink: "#0b0a09",
+        bone: "#ede6da",
+        ash: "#8f877c",
+        ember: "#ff5a36",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
